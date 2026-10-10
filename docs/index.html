@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Global Geography Quiz</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+  <style>
+    body { background-color: #0f172a; color: #f8fafc; font-family: ui-sans-serif, system-ui, sans-serif; }
+    .ocean { fill: #1e293b; }
+    
+    .country { stroke: #0f172a; stroke-width: 0.2px; transition: fill 0.2s ease; cursor: pointer; }
+    .country-disabled { cursor: default; opacity: 0.6; pointer-events: none; }
+    
+    .country-selected {
+      animation: selection-pulse 1.5s infinite alternate ease-in-out;
+      stroke: #ffffff !important;
+      stroke-width: 0.5px !important;
+    }
+    @keyframes selection-pulse {
+      0% { fill: #38bdf8; filter: drop-shadow(0 0 2px #38bdf8); }
+      100% { fill: #818cf8; filter: drop-shadow(0 0 4px #818cf8); }
+    }
+    
+    .capital-marker { 
+      stroke-width: 0.2px !important; 
+      pointer-events: none;
+      opacity: 0.95 !important;
+      transition: fill 0.2s ease, stroke 0.2s ease, r 0.2s ease;
+    }
+
+    .capital-selected {
+      stroke: #ffffff !important;
+      stroke-width: 0.4px !important;
+      animation: capital-pulse 1.2s infinite alternate ease-in-out;
+    }
+    @keyframes capital-pulse {
+      0% { filter: drop-shadow(0 0 1px #38bdf8); }
+      100% { filter: drop-shadow(0 0 3px #f43f5e); }
+    }
+
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #0f172a; border-radius: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #475569; }
+  </style>
+</head>
+<body class="h-screen w-screen overflow-hidden flex flex-col">
+
+  <header class="bg-slate-900 border-b border-slate-800 p-3 flex justify-between items-center z-10">
+    <div class="flex items-center space-x-3">
+      <div class="p-2 bg-indigo-600 rounded-lg font-bold text-white text-base">🌐 GeoQuiz</div>
+      <div>
+        <h1 class="text-base font-bold">World Geography Practice</h1>
+        <p id="data-status" class="text-xs text-amber-400">Loading datasets...</p>
+      </div>
+    </div>
+    <div class="flex items-center space-x-6 text-sm">
+      <div>Score: <span id="score-display" class="font-bold text-emerald-400">0 / 0 pts</span></div>
+      <div>Countries: <span id="country-progress" class="font-semibold text-slate-200">0 / 0</span></div>
+      <button id="btn-global-reset" class="bg-slate-800 hover:bg-slate-700 text-xs px-2.5 py-1 rounded border border-slate-700 text-slate-300">Reset All</button>
+    </div>
+  </header>
+
+  <div id="category-bar" class="bg-slate-900/90 border-b border-slate-800 px-4 py-2 flex items-center space-x-2 overflow-x-auto min-h-[44px]">
+    <span class="text-xs text-slate-500 font-semibold uppercase mr-2">Categories:</span>
+    <div id="category-chips-container" class="flex items-center space-x-2"></div>
+  </div>
+
+  <div class="flex-1 flex relative overflow-hidden">
+    <div id="map-container" class="flex-1 h-full w-full bg-slate-950 relative"></div>
+
+    <aside id="side-panel" class="w-88 sm:w-96 bg-slate-900 border-l border-slate-800 p-5 flex flex-col justify-between shadow-2xl z-10">
+      <div>
+        <div class="flex justify-between items-center pb-3 border-b border-slate-800">
+          <h2 id="panel-title" class="text-xl font-bold text-indigo-400">Select a Country</h2>
+          <button id="btn-close" class="text-slate-400 hover:text-white text-base">✕</button>
+        </div>
+
+        <div id="panel-content" class="mt-4">
+          <p id="panel-instructions" class="text-base text-slate-400 italic">Click any country on the map or select a category chip.</p>
+
+          <form id="quiz-form" class="space-y-4 hidden" onkeydown="return event.key != 'Enter';">
+            <div>
+              <label class="block text-sm font-semibold text-slate-300 uppercase mb-1">Country Name</label>
+              <input type="text" id="input-country" class="quiz-input w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-base text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" placeholder="Type country name..." />
+              <div id="feedback-country" class="text-sm mt-2 hidden"></div>
+            </div>
+
+            <div id="capitals-container" class="space-y-4"></div>
+
+            <button type="button" id="btn-submit" class="w-full bg-emerald-600 hover:bg-emerald-500 focus:bg-emerald-500 focus:ring-2 focus:ring-emerald-400 text-white font-bold py-2.5 rounded-lg transition shadow-lg mt-3 text-base focus:outline-none">Submit Answers</button>
+          </form>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Final Results Modal -->
+  <div id="results-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 max-w-lg w-full shadow-2xl flex flex-col max-h-[90vh]">
+      <div class="text-center mb-4">
+        <div class="text-4xl mb-1">🎉</div>
+        <h2 class="text-xl font-bold text-white">Quiz Completed!</h2>
+        <p class="text-sm text-slate-400 mt-0.5">Here is your full performance breakdown across all territories.</p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 mb-4">
+        <div class="bg-slate-800/80 p-3 rounded-lg border border-slate-700/50 text-center">
+          <div class="text-xs text-slate-400 uppercase font-semibold">Total Score</div>
+          <div id="modal-score" class="text-lg font-bold text-emerald-400 mt-0.5">0 / 0 pts</div>
+        </div>
+        <div class="bg-slate-800/80 p-3 rounded-lg border border-slate-700/50 text-center">
+          <div class="text-xs text-slate-400 uppercase font-semibold">Accuracy Rate</div>
+          <div id="modal-accuracy" class="text-lg font-bold text-indigo-400 mt-0.5">0%</div>
+        </div>
+      </div>
+
+      <div class="text-xs font-semibold text-slate-400 uppercase mb-2 flex justify-between items-center px-1">
+        <span>Results Breakdown</span>
+        <span id="modal-breakdown-count" class="text-slate-500">0 Countries</span>
+      </div>
+
+      <div id="modal-results-list" class="flex-1 overflow-y-auto custom-scrollbar border border-slate-800 rounded-lg p-3 bg-slate-950/60 space-y-3 mb-5"></div>
+
+      <button id="modal-btn-restart" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2.5 rounded-lg transition shadow-lg shrink-0 text-base">Reset & Play Again</button>
+    </div>
+  </div>
+
+  <script>
+    let state = {
+      countriesData: {},
+      geoFeatures: [],
+      userAnswers: {},
+      selectedId: null,
+      categories: { unanswered: [], unsubmitted: [], correct: [], partial: [], incorrect: [] },
+      categoryIndices: { unanswered: 0, unsubmitted: 0, correct: 0, partial: 0, incorrect: 0 }
+    };
+
+    const container = d3.select("#map-container");
+    let width = container.node().clientWidth || 1000;
+    let height = container.node().clientHeight || 700;
+
+    const projection = d3.geoMercator().scale(width / 6.5).translate([width / 2, height / 1.5]);
+    const path = d3.geoPath().projection(projection);
+
+    const svg = container.append("svg").attr("width", "100%").attr("height", "100%").attr("viewBox", `0 0 ${width} ${height}`);
+    svg.append("rect").attr("class", "ocean").attr("width", width).attr("height", height).on("click", () => deselectCountry());
+    
+    const gMap = svg.append("g").attr("id", "countries-group");
+    const gCapitals = svg.append("g").attr("id", "capitals-group");
+
+    const zoom = d3.zoom().scaleExtent([1, 50]).on("zoom", (e) => {
+      gMap.attr("transform", e.transform);
+      gCapitals.attr("transform", e.transform);
+      gCapitals.selectAll("circle").attr("r", d => {
+        const baseRadius = (d.countryId === state.selectedId) ? 2.2 : 1.5;
+        return Math.max(0.5, baseRadius / Math.sqrt(e.transform.k));
+      });
+    });
+    svg.call(zoom);
+
+    function shuffleArray(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    async function initApp() {
+      try {
+        const [topoData, localCapitalsData] = await Promise.all([
+          d3.json("./world_geo.json"),
+          d3.json("./countries_data.json")
+        ]);
+
+        if (!topoData || !localCapitalsData) {
+          throw new Error("One or both JSON files returned empty data.");
+        }
+
+        state.countriesData = localCapitalsData;
+
+        // Safely extract GeoJSON features from TopoJSON
+        let features = processTopoJsonFeatures(topoData);
+
+        // Run geometric fixes (Crimea, Kosovo, Western Sahara, Somalia unification)
+        features = fixAndMergeGeometries(features);
+        state.geoFeatures = features;
+
+        resetState();
+
+        document.getElementById("data-status").innerText = `Loaded ${Object.keys(state.countriesData).length} countries.`;
+        document.getElementById("data-status").className = "text-xs text-emerald-400";
+      } catch (err) {
+        console.error("GeoQuiz Initialization Error:", err);
+        document.getElementById("data-status").innerText = `Error: ${err.message || "Failed to parse map data"}`;
+        document.getElementById("data-status").className = "text-xs text-red-400";
+      }
+    }
+
+    function processTopoJsonFeatures(topoData) {
+      // Dynamically target the main objects layer (e.g. 'countries' or 'units')
+      const objectKey = topoData.objects.countries ? "countries" : Object.keys(topoData.objects)[0];
+      return topojson.feature(topoData, topoData.objects[objectKey]).features;
+    }
+
+    function resetState() {
+      state.userAnswers = {};
+      state.selectedId = null;
+      state.categories = { unanswered: [], unsubmitted: [], correct: [], partial: [], incorrect: [] };
+      state.categoryIndices = { unanswered: 0, unsubmitted: 0, correct: 0, partial: 0, incorrect: 0 };
+
+      const validIds = [];
+      state.geoFeatures.forEach(feature => {
+        const id = String(feature.id || feature.properties?.iso_n3).padStart(3, '0');
+        if (state.countriesData[id]) {
+          validIds.push(id);
+        }
+      });
+
+      state.categories.unanswered = shuffleArray(validIds);
+
+      document.getElementById("results-modal").classList.add("hidden");
+      deselectCountry();
+      renderMap();
+      renderCapitals();
+      renderCategoryChips();
+      updateScoreboard();
+
+      setTimeout(() => {
+        const unansweredBtn = document.querySelector("[data-category='unanswered']");
+        if (unansweredBtn) unansweredBtn.focus();
+      }, 100);
+    }
+
+    function fixAndMergeGeometries(features) {
+      const isFeature = (f, ids, names) => {
+        const id = String(f.id || f.properties?.iso_n3 || f.properties?.ISO_N3 || '').padStart(3, '0');
+        const name = (f.properties?.name || f.properties?.NAME || '').toLowerCase();
+        const code = (f.properties?.iso_a3 || f.properties?.ADM0_A3 || '').toUpperCase();
+        return ids.includes(id) || names.some(n => name.includes(n.toLowerCase())) || ids.includes(code);
+      };
+
+      // 1. Crimea (643 / RUS -> 804 / UKR)
+      const russia = features.find(f => isFeature(f, ["643", "RUS"], ["russia"]));
+      const ukraine = features.find(f => isFeature(f, ["804", "UKR"], ["ukraine"]));
+      if (russia && russia.geometry?.type === "MultiPolygon") {
+        const isCrimea = (ring) => {
+          const lons = ring.map(p => p[0]), lats = ring.map(p => p[1]);
+          return Math.min(...lons) >= 32.0 && Math.max(...lons) <= 37.0 && Math.min(...lats) >= 44.0 && Math.max(...lats) <= 46.5;
+        };
+        const crimeaPolys = [];
+        russia.geometry.coordinates = russia.geometry.coordinates.filter(poly => {
+          if (isCrimea(poly[0])) { crimeaPolys.push(poly); return false; }
+          return true;
+        });
+        if (ukraine && crimeaPolys.length > 0) {
+          if (ukraine.geometry.type === "Polygon") {
+            ukraine.geometry = { type: "MultiPolygon", coordinates: [ukraine.geometry.coordinates, ...crimeaPolys] };
+          } else if (ukraine.geometry.type === "MultiPolygon") {
+            ukraine.geometry.coordinates.push(...crimeaPolys);
+          }
+        }
+      }
+
+      // 2. Kosovo (383)
+      const serbia = features.find(f => isFeature(f, ["688", "SRB"], ["serbia"]));
+      if (serbia && serbia.geometry) {
+        const isKosovo = (ring) => {
+          const lons = ring.map(p => p[0]), lats = ring.map(p => p[1]);
+          return Math.min(...lons) >= 19.8 && Math.max(...lons) <= 21.8 && Math.min(...lats) >= 41.8 && Math.max(...lats) <= 43.3;
+        };
+        let kosovoRings = [];
+        if (serbia.geometry.type === "Polygon") {
+          const rem = [];
+          serbia.geometry.coordinates.forEach((ring, idx) => {
+            if (idx > 0 && isKosovo(ring)) kosovoRings.push(ring);
+            else rem.push(ring);
+          });
+          serbia.geometry.coordinates = rem;
+        } else if (serbia.geometry.type === "MultiPolygon") {
+          const rem = [];
+          serbia.geometry.coordinates.forEach(poly => {
+            if (isKosovo(poly[0])) kosovoRings.push(poly[0]);
+            else rem.push(poly);
+          });
+          serbia.geometry.coordinates = rem;
+        }
+
+        if (kosovoRings.length > 0) {
+          features.push({
+            type: "Feature",
+            id: "383",
+            properties: { name: "Kosovo", iso_n3: "383", iso_a3: "XKX" },
+            geometry: { type: "Polygon", coordinates: [kosovoRings[0]] }
+          });
+        }
+      }
+
+      // 3. Merge Somalia (706) & Somaliland (705 / SML) into ONE clean feature
+      const somalia = features.find(f => isFeature(f, ["706", "SOM"], ["somalia"]));
+      const somalilandIdx = features.findIndex(f => isFeature(f, ["705", "SML", "SOL"], ["somaliland"]));
+
+      if (somalilandIdx !== -1 && somalia) {
+        const somaliland = features[somalilandIdx];
+        const getPolys = (feat) => feat.geometry.type === "Polygon" ? [feat.geometry.coordinates] : feat.geometry.coordinates;
+        
+        somalia.geometry = {
+          type: "MultiPolygon",
+          coordinates: [...getPolys(somalia), ...getPolys(somaliland)]
+        };
+        features.splice(somalilandIdx, 1);
+      }
+
+      // 4. Separate Western Sahara (732) from Morocco (504)
+      const morocco = features.find(f => isFeature(f, ["504", "MAR"], ["morocco"]));
+      const existingSahara = features.find(f => isFeature(f, ["732", "ESH", "SAH"], ["western sahara"]));
+
+      if (!existingSahara && morocco && morocco.geometry) {
+        const polys = morocco.geometry.type === "Polygon" ? [morocco.geometry.coordinates] : morocco.geometry.coordinates;
+        const saharaRings = [];
+        const northernRings = [];
+
+        polys.forEach(poly => {
+          const lats = poly[0].map(p => p[1]);
+          const maxLat = Math.max(...lats);
+          
+          if (maxLat <= 27.8) {
+            saharaRings.push(poly);
+          } else {
+            northernRings.push(poly);
+          }
+        });
+
+        if (saharaRings.length > 0) {
+          morocco.geometry = { type: "MultiPolygon", coordinates: northernRings };
+          features.push({
+            type: "Feature",
+            id: "732",
+            properties: { name: "Western Sahara", iso_n3: "732", iso_a3: "ESH" },
+            geometry: {
+              type: saharaRings.length === 1 ? "Polygon" : "MultiPolygon",
+              coordinates: saharaRings.length === 1 ? saharaRings[0] : saharaRings
+            }
+          });
+        }
+      }
+
+      return mergeTerritories(features);
+    }
+
+    function mergeTerritories(features) {
+      const territoryMapping = {
+        "304": "208", "234": "208", "254": "250", "638": "250", "312": "250", "474": "250", "630": "840"
+      };
+
+      const parentFeatures = {}, standaloneFeatures = [];
+      features.forEach(f => {
+        const id = String(f.id || f.properties?.iso_n3).padStart(3, '0');
+        const parentId = territoryMapping[id];
+        if (parentId) {
+          if (!parentFeatures[parentId]) parentFeatures[parentId] = [];
+          parentFeatures[parentId].push(f);
+        } else {
+          if (!parentFeatures[id]) parentFeatures[id] = [];
+          parentFeatures[id].push(f);
+          standaloneFeatures.push(f);
+        }
+      });
+
+      Object.entries(parentFeatures).forEach(([parentId, featureList]) => {
+        if (featureList.length <= 1) return;
+        const parentMain = standaloneFeatures.find(f => String(f.id || f.properties?.iso_n3).padStart(3, '0') === parentId);
+        if (!parentMain) return;
+
+        let mergedCoords = [];
+        featureList.forEach(feat => {
+          if (feat.geometry.type === "Polygon") mergedCoords.push(feat.geometry.coordinates);
+          else if (feat.geometry.type === "MultiPolygon") mergedCoords.push(...feat.geometry.coordinates);
+        });
+        parentMain.geometry.type = "MultiPolygon";
+        parentMain.geometry.coordinates = mergedCoords;
+      });
+
+      return standaloneFeatures;
+    }
+
+    function renderMap() {
+      const paths = gMap.selectAll("path").data(state.geoFeatures, d => String(d.id || d.properties?.iso_n3).padStart(3, '0'));
+
+      paths.enter()
+        .append("path")
+        .merge(paths)
+        .attr("d", path)
+        .attr("class", d => {
+          const id = String(d.id || d.properties?.iso_n3).padStart(3, '0');
+          return state.countriesData[id] ? "country" : "country country-disabled";
+        })
+        .attr("fill", d => {
+          const id = String(d.id || d.properties?.iso_n3).padStart(3, '0');
+          if (!state.countriesData[id]) return "#1e293b";
+          
+          const ans = state.userAnswers[id];
+          if (!ans) return "#334155";
+          if (!ans.submitted) return "#f59e0b";
+          return ans.scoreRatio === 1 ? "#22c55e" : (ans.scoreRatio > 0 ? "#f97316" : "#ef4444");
+        })
+        .classed("country-selected", d => String(d.id || d.properties?.iso_n3).padStart(3, '0') === state.selectedId)
+        .on("click", (e, d) => {
+          e.stopPropagation();
+          const id = String(d.id || d.properties?.iso_n3).padStart(3, '0');
+          if (!state.countriesData[id]) return;
+
+          if (state.selectedId === id) {
+            deselectCountry();
+          } else {
+            selectCountry(id);
+          }
+        });
+
+      paths.exit().remove();
+    }
+
+    function renderCapitals() {
+      const points = [];
+
+      state.geoFeatures.forEach(feature => {
+        const id = String(feature.id || feature.properties?.iso_n3).padStart(3, '0');
+        const data = state.countriesData[id];
+        if (!data) return;
+
+        const getProjectedPoint = (coords) => {
+          if (Array.isArray(coords) && coords.length === 2) {
+            const lat = parseFloat(coords[0]), lng = parseFloat(coords[1]);
+            if (!isNaN(lat) && !isNaN(lng)) return projection([lng, lat]);
+          }
+          return null;
+        };
+
+        if (data.coordinates && typeof data.coordinates === 'object' && !Array.isArray(data.coordinates)) {
+          Object.entries(data.coordinates).forEach(([capName, coords]) => {
+            const projected = getProjectedPoint(coords);
+            if (projected) points.push({ key: `${id}-${capName}`, countryId: id, capitalName: capName, cx: projected[0], cy: projected[1] });
+          });
+        } else if (Array.isArray(data.coordinates) && data.coordinates.length === 2) {
+          const projected = getProjectedPoint(data.coordinates);
+          if (projected) points.push({ key: `${id}-${data.capitals?.[0] || 'cap'}`, countryId: id, capitalName: data.capitals?.[0] || 'Capital', cx: projected[0], cy: projected[1] });
+        } else {
+          const geoCenter = d3.geoCentroid(feature);
+          if (geoCenter && !isNaN(geoCenter[0]) && !isNaN(geoCenter[1])) {
+            const projected = projection(geoCenter);
+            if (projected) points.push({ key: `${id}-centroid`, countryId: id, capitalName: data.capitals?.[0] || 'Capital', cx: projected[0], cy: projected[1] });
+          }
+        }
+      });
+
+      const circles = gCapitals.selectAll("circle").data(points, d => d.key);
+      const currentTransform = d3.zoomTransform(svg.node());
+
+      circles.enter()
+        .append("circle")
+        .merge(circles)
+        .attr("class", d => d.countryId === state.selectedId ? "capital-marker capital-selected" : "capital-marker")
+        .attr("cx", d => d.cx)
+        .attr("cy", d => d.cy)
+        .attr("r", d => {
+          const baseRadius = (d.countryId === state.selectedId) ? 2.2 : 1.5;
+          return Math.max(0.5, baseRadius / Math.sqrt(currentTransform.k || 1));
+        })
+        .attr("fill", d => {
+          const data = state.countriesData[d.countryId];
+          const ans = state.userAnswers[d.countryId];
+          if (!data || !ans || !ans.submitted) return "#f59e0b";
+
+          const accepted = data.accepted_capitals?.[d.capitalName] || [d.capitalName];
+          const isThisCapCorrect = (ans.capitals || []).some(userVal => checkMatch(userVal, accepted));
+          return isThisCapCorrect ? "#22c55e" : "#ef4444";
+        })
+        .attr("stroke", d => d.countryId === state.selectedId ? "#ffffff" : "#0f172a");
+
+      circles.exit().remove();
+    }
+
+    function selectCountry(id) {
+      if (!state.countriesData[id]) return;
+
+      state.selectedId = id;
+      renderMap();
+      renderCapitals();
+      populatePanel(id);
+
+      const feature = state.geoFeatures.find(f => String(f.id || f.properties?.iso_n3).padStart(3, '0') === id);
+      if (feature) {
+        const bounds = path.bounds(feature);
+        const dx = bounds[1][0] - bounds[0][0];
+        const dy = bounds[1][1] - bounds[0][1];
+        
+        const x = bounds[0][0] + dx / 2;
+        const y = bounds[0][1] + dy / 2;
+
+        if (isNaN(x) || isNaN(y) || dx === 0 || dy === 0) return;
+
+        const scale = Math.max(1, Math.min(8, 0.45 / Math.max(dx / width, dy / height)));
+        const translate = [width / 2 - scale * x, height / 2 - scale * y];
+
+        svg.transition()
+          .duration(1200)
+          .ease(d3.easeCubicInOut)
+          .call(
+            zoom.transform,
+            d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale)
+          );
+      }
+    }
+
+    function deselectCountry() {
+      state.selectedId = null;
+      renderMap();
+      renderCapitals();
+      document.getElementById("quiz-form").classList.add("hidden");
+      document.getElementById("panel-instructions").classList.remove("hidden");
+      document.getElementById("panel-title").innerText = "Select a Country";
+    }
+
+    function populatePanel(id) {
+      const data = state.countriesData[id];
+      if (!data) return;
+
+      document.getElementById("panel-instructions").classList.add("hidden");
+      const form = document.getElementById("quiz-form");
+      form.classList.remove("hidden");
+
+      const ans = state.userAnswers[id] || { country: '', capitals: [], submitted: false };
+      document.getElementById("panel-title").innerText = ans.submitted ? data.name : `Territory #${id}`;
+
+      const cInput = document.getElementById("input-country");
+      cInput.value = ans.country;
+      cInput.disabled = ans.submitted;
+
+      const capsContainer = document.getElementById("capitals-container");
+      capsContainer.innerHTML = '';
+      data.capitals.forEach((cap, i) => {
+        capsContainer.innerHTML += `
+          <div>
+            <label class="block text-sm font-semibold text-slate-300 uppercase mb-1">
+              Capital ${data.capitals.length > 1 ? '#' + (i + 1) : ''}
+            </label>
+            <input type="text" class="input-capital quiz-input w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-base text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" 
+                   value="${ans.capitals[i] || ''}" ${ans.submitted ? 'disabled' : ''} placeholder="Type capital name..." />
+            <div class="feedback-capital text-sm mt-2 hidden"></div>
+          </div>
+        `;
+      });
+
+      setupEnterKeyNavigation();
+      form.oninput = () => { if (!ans.submitted) saveDraft(id); };
+
+      const submitBtn = document.getElementById("btn-submit");
+      submitBtn.onclick = () => { if (!ans.submitted) submitAnswers(id); };
+      submitBtn.onkeydown = (e) => {
+        if (e.key === 'Enter' && !ans.submitted) {
+          e.preventDefault();
+          submitAnswers(id);
+        }
+      };
+
+      if (ans.submitted) {
+        renderFeedback(id);
+      } else {
+        document.getElementById("feedback-country").classList.add("hidden");
+        submitBtn.classList.remove("hidden");
+        
+        setTimeout(() => {
+          cInput.focus();
+          cInput.select();
+        }, 50);
+      }
+    }
+
+    function setupEnterKeyNavigation() {
+      const inputs = Array.from(document.querySelectorAll(".quiz-input"));
+      const submitBtn = document.getElementById("btn-submit");
+
+      inputs.forEach((input, index) => {
+        input.onkeydown = (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            if (index < inputs.length - 1) {
+              inputs[index + 1].focus();
+              inputs[index + 1].select();
+            } else {
+              submitBtn.focus();
+            }
+          }
+        };
+      });
+    }
+
+    function calculatePoints(id, countryVal, capInputs) {
+      const data = state.countriesData[id];
+      if (!data) return { pointsEarned: 0, totalPossible: 0, scoreRatio: 0 };
+
+      let pointsEarned = 0;
+      const totalPossible = 1 + data.capitals.length;
+
+      const isCountryCorrect = checkMatch(countryVal, data.accepted_country_names);
+      if (isCountryCorrect) pointsEarned += 1;
+
+      let availCaps = [...data.capitals];
+      capInputs.forEach(val => {
+        const mIdx = availCaps.findIndex(cap => checkMatch(val, data.accepted_capitals?.[cap] || [cap]));
+        if (mIdx !== -1) {
+          pointsEarned += 1;
+          availCaps.splice(mIdx, 1);
+        }
+      });
+
+      return { pointsEarned, totalPossible, scoreRatio: pointsEarned / totalPossible };
+    }
+
+    function saveDraft(id) {
+      const countryVal = document.getElementById("input-country").value.trim();
+      const capInputs = Array.from(document.querySelectorAll(".input-capital")).map(i => i.value.trim());
+
+      const { pointsEarned, totalPossible, scoreRatio } = calculatePoints(id, countryVal, capInputs);
+
+      state.userAnswers[id] = { 
+        country: countryVal, 
+        capitals: capInputs, 
+        submitted: false, 
+        scoreRatio,
+        pointsEarned, 
+        totalPossible 
+      };
+
+      updateCategoryState(id, 'unsubmitted');
+      renderMap();
+      renderCapitals();
+    }
+
+    function submitAnswers(id) {
+      const countryVal = document.getElementById("input-country").value.trim();
+      const capInputs = Array.from(document.querySelectorAll(".input-capital")).map(i => i.value.trim());
+
+      const { pointsEarned, totalPossible, scoreRatio } = calculatePoints(id, countryVal, capInputs);
+
+      state.userAnswers[id] = { 
+        country: countryVal, 
+        capitals: capInputs, 
+        submitted: true, 
+        scoreRatio,
+        pointsEarned,
+        totalPossible
+      };
+
+      let cat = 'incorrect';
+      if (scoreRatio === 1) cat = 'correct';
+      else if (scoreRatio > 0) cat = 'partial';
+
+      updateCategoryState(id, cat);
+      updateScoreboard();
+      renderMap();
+      renderCapitals();
+      populatePanel(id);
+
+      if (state.categories.unanswered.length === 0) {
+        triggerCompletionModal();
+      } else {
+        setTimeout(() => {
+          const unansweredBtn = document.querySelector("[data-category='unanswered']");
+          if (unansweredBtn) unansweredBtn.focus();
+        }, 100);
+      }
+    }
+
+    function checkMatch(input, acceptedList) {
+      if (!input || !input.trim() || !acceptedList) return false;
+      const clean = str => String(str).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+      const cleanIn = clean(input);
+      return cleanIn.length > 0 && acceptedList.some(a => clean(a) === cleanIn);
+    }
+
+    function renderFeedback(id) {
+      const data = state.countriesData[id];
+      const ans = state.userAnswers[id];
+
+      // 1. Country Name Feedback
+      const fbCountry = document.getElementById("feedback-country");
+      fbCountry.classList.remove("hidden");
+      const isCountryCorrect = checkMatch(ans.country, data.accepted_country_names);
+      
+      const preferredCountry = data.name || (data.accepted_country_names ? data.accepted_country_names[0] : 'N/A');
+      fbCountry.className = `p-2.5 rounded-lg border text-sm mt-2 ${isCountryCorrect ? 'bg-emerald-950/50 border-emerald-800 text-emerald-300' : 'bg-red-950/50 border-red-800 text-red-300'}`;
+      fbCountry.innerHTML = `
+        <div class="font-bold">${isCountryCorrect ? '✓ Correct Country' : '✗ Incorrect Country'}</div>
+        <div class="text-slate-300 mt-0.5">Preferred Answer: <span class="font-semibold text-white">${preferredCountry}</span></div>
+      `;
+
+      // 2. Capital Feedback
+      const capInputs = document.querySelectorAll(".input-capital");
+      let availCaps = [...data.capitals];
+      const isMultiCapital = data.capitals.length > 1;
+
+      capInputs.forEach((inp, idx) => {
+        const fbCap = inp.nextElementSibling;
+        fbCap.classList.remove("hidden");
+        const val = ans.capitals[idx] || '';
+
+        const matchedIdx = availCaps.findIndex(c => checkMatch(val, data.accepted_capitals?.[c] || [c]));
+        const isCapCorrect = matchedIdx !== -1;
+
+        if (isCapCorrect) {
+          availCaps.splice(matchedIdx, 1);
+        }
+
+        const preferredDisplay = isMultiCapital ? data.capitals.join(", ") : (data.capitals[idx] || data.capitals[0] || 'N/A');
+        
+        fbCap.className = `p-2.5 rounded-lg border text-sm mt-2 ${isCapCorrect ? 'bg-emerald-950/50 border-emerald-800 text-emerald-300' : 'bg-red-950/50 border-red-800 text-red-300'}`;
+        fbCap.innerHTML = `
+          <div class="font-bold">${isCapCorrect ? '✓ Correct Capital' : '✗ Incorrect Capital'}</div>
+          <div class="text-slate-300 mt-0.5">Preferred Answer${isMultiCapital ? 's' : ''}: <span class="font-semibold text-white">${preferredDisplay}</span></div>
+        `;
+      });
+
+      document.getElementById("btn-submit").classList.add("hidden");
+    }
+
+    function updateCategoryState(id, newCat) {
+      Object.keys(state.categories).forEach(c => {
+        state.categories[c] = state.categories[c].filter(x => x !== id);
+      });
+      state.categories[newCat].push(id);
+      renderCategoryChips();
+    }
+
+    function renderCategoryChips() {
+      const container = document.getElementById("category-chips-container");
+      container.innerHTML = '';
+      const labels = {
+        unanswered: 'Unanswered',
+        unsubmitted: 'Drafts',
+        correct: '100% Correct',
+        partial: 'Partial',
+        incorrect: 'Incorrect'
+      };
+
+      Object.entries(state.categories).forEach(([cat, list]) => {
+        if (!list.length) return;
+        const btn = document.createElement("button");
+        btn.setAttribute("data-category", cat);
+        btn.className = "px-3 py-1 rounded-full border text-xs font-medium bg-slate-800 border-slate-700 text-slate-200 hover:bg-slate-700 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition";
+        btn.innerHTML = `${labels[cat]} (${list.length}) <span class="text-indigo-400 font-bold ml-1">Next →</span>`;
+        btn.onclick = () => {
+          const idx = state.categoryIndices[cat] % list.length;
+          const targetId = list[idx];
+          state.categoryIndices[cat] = (idx + 1) % list.length;
+          selectCountry(targetId);
+        };
+        container.appendChild(btn);
+      });
+    }
+
+    function updateScoreboard() {
+      let earned = 0, total = 0, doneCount = 0;
+      const totalCount = Object.keys(state.countriesData).length;
+
+      Object.entries(state.countriesData).forEach(([id, data]) => {
+        const poss = 1 + data.capitals.length;
+        total += poss;
+        const ans = state.userAnswers[id];
+        if (ans && ans.submitted) {
+          earned += ans.pointsEarned;
+          if (ans.scoreRatio === 1) doneCount++;
+        }
+      });
+
+      document.getElementById("score-display").innerText = `${earned} / ${total} pts`;
+      document.getElementById("country-progress").innerText = `${doneCount} / ${totalCount}`;
+
+      return { earned, total };
+    }
+
+    function triggerCompletionModal() {
+      const { earned, total } = updateScoreboard();
+      const accuracy = total > 0 ? Math.round((earned / total) * 100) : 0;
+
+      document.getElementById("modal-score").innerText = `${earned} / ${total} pts`;
+      document.getElementById("modal-accuracy").innerText = `${accuracy}%`;
+
+      const listContainer = document.getElementById("modal-results-list");
+      listContainer.innerHTML = '';
+
+      const submittedEntries = Object.entries(state.userAnswers).filter(([_, ans]) => ans.submitted);
+      document.getElementById("modal-breakdown-count").innerText = `${submittedEntries.length} / ${Object.keys(state.countriesData).length} Attempted`;
+
+      submittedEntries.forEach(([id, ans]) => {
+        const data = state.countriesData[id];
+        if (!data) return;
+
+        const isCountryCorrect = checkMatch(ans.country, data.accepted_country_names);
+        const card = document.createElement("div");
+        card.className = "bg-slate-900 border border-slate-800 rounded-lg p-3 space-y-2";
+
+        let badgeClass = "bg-red-950/80 text-red-300 border-red-800";
+        let badgeLabel = "Incorrect";
+        if (ans.scoreRatio === 1) {
+          badgeClass = "bg-emerald-950/80 text-emerald-300 border-emerald-800";
+          badgeLabel = "100% Correct";
+        } else if (ans.scoreRatio > 0) {
+          badgeClass = "bg-amber-950/80 text-amber-300 border-amber-800";
+          badgeLabel = "Partial";
+        }
+
+        let html = `
+          <div class="flex justify-between items-center pb-1.5 border-b border-slate-800">
+            <span class="font-bold text-slate-100 text-sm">${data.name}</span>
+            <span class="px-2 py-0.5 rounded border text-xs font-semibold ${badgeClass}">
+              ${badgeLabel} (${ans.pointsEarned}/${ans.totalPossible} pts)
+            </span>
+          </div>
+          <div class="text-xs text-slate-300 pl-2">
+            Country: ${isCountryCorrect ? '<span class="text-emerald-400 font-medium">✓ ' + (ans.country || data.name) + '</span>' : '<span class="text-red-400">✗ ' + (ans.country || 'Blank') + '</span> <span class="text-slate-500">(Expected: ' + data.name + ')</span>'}
+          </div>
+        `;
+
+        let availCaps = [...data.capitals];
+        data.capitals.forEach((cap, idx) => {
+          const userCapVal = ans.capitals[idx] || '';
+          const matchedIdx = availCaps.findIndex(c => checkMatch(userCapVal, data.accepted_capitals?.[c] || [c]));
+          const isCapCorrect = matchedIdx !== -1;
+          if (isCapCorrect) availCaps.splice(matchedIdx, 1);
+
+          html += `
+            <div class="text-xs text-slate-300 pl-5 border-l-2 border-slate-800 ml-2">
+              Capital ${data.capitals.length > 1 ? '#' + (idx + 1) : ''}: 
+              ${isCapCorrect 
+                ? '<span class="text-emerald-400 font-medium">✓ ' + (userCapVal || cap) + '</span>' 
+                : '<span class="text-red-400">✗ ' + (userCapVal || 'Blank') + '</span> <span class="text-slate-500">(Expected: ' + cap + ')</span>'}
+            </div>
+          `;
+        });
+
+        card.innerHTML = html;
+        listContainer.appendChild(card);
+      });
+
+      document.getElementById("results-modal").classList.remove("hidden");
+    }
+
+    document.getElementById("btn-close").onclick = () => deselectCountry();
+    document.getElementById("btn-global-reset").onclick = () => resetState();
+    document.getElementById("modal-btn-restart").onclick = () => resetState();
+
+    initApp();
+  </script>
+</body>
+</html>
