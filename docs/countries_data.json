@@ -1,0 +1,3682 @@
+{
+  "004": {
+    "id": "004",
+    "name": "Afghanistan",
+    "accepted_country_names": [
+      "Afghanistan"
+    ],
+    "capitals": [
+      "Kabul"
+    ],
+    "accepted_capitals": {
+      "Kabul": [
+        "Kabul"
+      ]
+    },
+    "coordinates": {
+      "Kabul": [34.5553, 69.2075]
+    }
+  },
+  "024": {
+    "id": "024",
+    "name": "Angola",
+    "accepted_country_names": [
+      "Angola"
+    ],
+    "capitals": [
+      "Luanda"
+    ],
+    "accepted_capitals": {
+      "Luanda": [
+        "Luanda"
+      ]
+    },
+    "coordinates": {
+      "Luanda": [-8.8383, 13.2344]
+    }
+  },
+  "008": {
+    "id": "008",
+    "name": "Albania",
+    "accepted_country_names": [
+      "Albania"
+    ],
+    "capitals": [
+      "Tirana"
+    ],
+    "accepted_capitals": {
+      "Tirana": [
+        "Tirana"
+      ]
+    },
+    "coordinates": {
+      "Tirana": [41.3275, 19.8187]
+    }
+  },
+  "020": {
+    "id": "020",
+    "name": "Andorra",
+    "accepted_country_names": [
+      "Andorra"
+    ],
+    "capitals": [
+      "Andorra la Vella"
+    ],
+    "accepted_capitals": {
+      "Andorra la Vella": [
+        "Andorra la Vella"
+      ]
+    },
+    "coordinates": {
+      "Andorra la Vella": [42.5063, 1.5218]
+    }
+  },
+  "784": {
+    "id": "784",
+    "name": "United Arab Emirates",
+    "accepted_country_names": [
+      "UAE",
+      "United Arab Emirates"
+    ],
+    "capitals": [
+      "Abu Dhabi"
+    ],
+    "accepted_capitals": {
+      "Abu Dhabi": [
+        "Abu Dhabi"
+      ]
+    },
+    "coordinates": {
+      "Abu Dhabi": [24.4539, 54.3773]
+    }
+  },
+  "032": {
+    "id": "032",
+    "name": "Argentina",
+    "accepted_country_names": [
+      "Argentina"
+    ],
+    "capitals": [
+      "Buenos Aires"
+    ],
+    "accepted_capitals": {
+      "Buenos Aires": [
+        "Buenos Aires"
+      ]
+    },
+    "coordinates": {
+      "Buenos Aires": [-34.6037, -58.3816]
+    }
+  },
+  "051": {
+    "id": "051",
+    "name": "Armenia",
+    "accepted_country_names": [
+      "Armenia"
+    ],
+    "capitals": [
+      "Yerevan"
+    ],
+    "accepted_capitals": {
+      "Yerevan": [
+        "Yerevan"
+      ]
+    },
+    "coordinates": {
+      "Yerevan": [40.1792, 44.4991]
+    }
+  },
+  "028": {
+    "id": "028",
+    "name": "Antigua and Barbuda",
+    "accepted_country_names": [
+      "Antigua and Barbuda",
+      "Antigua & Barbuda"
+    ],
+    "capitals": [
+      "Saint John's"
+    ],
+    "accepted_capitals": {
+      "Saint John's": [
+        "Saint John's",
+        "St. John's",
+        "St John's"
+      ]
+    },
+    "coordinates": {
+      "Saint John's": [17.1274, -61.8468]
+    }
+  },
+  "036": {
+    "id": "036",
+    "name": "Australia",
+    "accepted_country_names": [
+      "Australia"
+    ],
+    "capitals": [
+      "Canberra"
+    ],
+    "accepted_capitals": {
+      "Canberra": [
+        "Canberra"
+      ]
+    },
+    "coordinates": {
+      "Canberra": [-35.2809, 149.1300]
+    }
+  },
+  "040": {
+    "id": "040",
+    "name": "Austria",
+    "accepted_country_names": [
+      "Austria"
+    ],
+    "capitals": [
+      "Vienna"
+    ],
+    "accepted_capitals": {
+      "Vienna": [
+        "Vienna"
+      ]
+    },
+    "coordinates": {
+      "Vienna": [48.2082, 16.3738]
+    }
+  },
+  "031": {
+    "id": "031",
+    "name": "Azerbaijan",
+    "accepted_country_names": [
+      "Azerbaijan"
+    ],
+    "capitals": [
+      "Baku"
+    ],
+    "accepted_capitals": {
+      "Baku": [
+        "Baku"
+      ]
+    },
+    "coordinates": {
+      "Baku": [40.4093, 49.8671]
+    }
+  },
+  "108": {
+    "id": "108",
+    "name": "Burundi",
+    "accepted_country_names": [
+      "Burundi"
+    ],
+    "capitals": [
+      "Gitega"
+    ],
+    "accepted_capitals": {
+      "Gitega": [
+        "Gitega"
+      ]
+    },
+    "coordinates": {
+      "Gitega": [-3.4264, 29.9249]
+    }
+  },
+  "056": {
+    "id": "056",
+    "name": "Belgium",
+    "accepted_country_names": [
+      "Belgium"
+    ],
+    "capitals": [
+      "Brussels"
+    ],
+    "accepted_capitals": {
+      "Brussels": [
+        "Brussels"
+      ]
+    },
+    "coordinates": {
+      "Brussels": [50.8503, 4.3517]
+    }
+  },
+  "204": {
+    "id": "204",
+    "name": "Benin",
+    "accepted_country_names": [
+      "Benin"
+    ],
+    "capitals": [
+      "Porto-Novo"
+    ],
+    "accepted_capitals": {
+      "Porto-Novo": [
+        "Porto-Novo",
+        "Porto Novo"
+      ]
+    },
+    "coordinates": {
+      "Porto-Novo": [6.4969, 2.6289]
+    }
+  },
+  "854": {
+    "id": "854",
+    "name": "Burkina Faso",
+    "accepted_country_names": [
+      "Burkina Faso"
+    ],
+    "capitals": [
+      "Ouagadougou"
+    ],
+    "accepted_capitals": {
+      "Ouagadougou": [
+        "Ouagadougou"
+      ]
+    },
+    "coordinates": {
+      "Ouagadougou": [12.3714, -1.5197]
+    }
+  },
+  "050": {
+    "id": "050",
+    "name": "Bangladesh",
+    "accepted_country_names": [
+      "Bangladesh"
+    ],
+    "capitals": [
+      "Dhaka"
+    ],
+    "accepted_capitals": {
+      "Dhaka": [
+        "Dhaka"
+      ]
+    },
+    "coordinates": {
+      "Dhaka": [23.8103, 90.4125]
+    }
+  },
+  "100": {
+    "id": "100",
+    "name": "Bulgaria",
+    "accepted_country_names": [
+      "Bulgaria"
+    ],
+    "capitals": [
+      "Sofia"
+    ],
+    "accepted_capitals": {
+      "Sofia": [
+        "Sofia"
+      ]
+    },
+    "coordinates": {
+      "Sofia": [42.6977, 23.3219]
+    }
+  },
+  "048": {
+    "id": "048",
+    "name": "Bahrain",
+    "accepted_country_names": [
+      "Bahrain"
+    ],
+    "capitals": [
+      "Manama"
+    ],
+    "accepted_capitals": {
+      "Manama": [
+        "Manama"
+      ]
+    },
+    "coordinates": {
+      "Manama": [26.2285, 50.5860]
+    }
+  },
+  "044": {
+    "id": "044",
+    "name": "Bahamas",
+    "accepted_country_names": [
+      "Bahamas",
+      "The Bahamas"
+    ],
+    "capitals": [
+      "Nassau"
+    ],
+    "accepted_capitals": {
+      "Nassau": [
+        "Nassau"
+      ]
+    },
+    "coordinates": {
+      "Nassau": [25.0343, -77.3963]
+    }
+  },
+  "070": {
+    "id": "070",
+    "name": "Bosnia and Herzegovina",
+    "accepted_country_names": [
+      "Bosnia and Herzegovina",
+      "Bosnia & Herzegovina"
+    ],
+    "capitals": [
+      "Sarajevo"
+    ],
+    "accepted_capitals": {
+      "Sarajevo": [
+        "Sarajevo"
+      ]
+    },
+    "coordinates": {
+      "Sarajevo": [43.8563, 18.4131]
+    }
+  },
+  "112": {
+    "id": "112",
+    "name": "Belarus",
+    "accepted_country_names": [
+      "Belarus"
+    ],
+    "capitals": [
+      "Minsk"
+    ],
+    "accepted_capitals": {
+      "Minsk": [
+        "Minsk"
+      ]
+    },
+    "coordinates": {
+      "Minsk": [53.9006, 27.5590]
+    }
+  },
+  "084": {
+    "id": "084",
+    "name": "Belize",
+    "accepted_country_names": [
+      "Belize"
+    ],
+    "capitals": [
+      "Belmopan"
+    ],
+    "accepted_capitals": {
+      "Belmopan": [
+        "Belmopan"
+      ]
+    },
+    "coordinates": {
+      "Belmopan": [17.2510, -88.7590]
+    }
+  },
+  "068": {
+    "id": "068",
+    "name": "Bolivia",
+    "accepted_country_names": [
+      "Bolivia"
+    ],
+    "capitals": [
+      "La Paz",
+      "Sucre"
+    ],
+    "accepted_capitals": {
+      "La Paz": [
+        "La Paz"
+      ],
+      "Sucre": [
+        "Sucre"
+      ]
+    },
+    "coordinates": {
+      "La Paz": [-16.4897, -68.1193],
+      "Sucre": [-19.0196, -65.2619]
+    }
+  },
+  "076": {
+    "id": "076",
+    "name": "Brazil",
+    "accepted_country_names": [
+      "Brazil",
+      "Brasil"
+    ],
+    "capitals": [
+      "Brasília"
+    ],
+    "accepted_capitals": {
+      "Brasília": [
+        "Brasília",
+        "Brasilia"
+      ]
+    },
+    "coordinates": {
+      "Brasília": [-15.7975, -47.8919]
+    }
+  },
+  "052": {
+    "id": "052",
+    "name": "Barbados",
+    "accepted_country_names": [
+      "Barbados"
+    ],
+    "capitals": [
+      "Bridgetown"
+    ],
+    "accepted_capitals": {
+      "Bridgetown": [
+        "Bridgetown"
+      ]
+    },
+    "coordinates": {
+      "Bridgetown": [13.1060, -59.6132]
+    }
+  },
+  "096": {
+    "id": "096",
+    "name": "Brunei",
+    "accepted_country_names": [
+      "Brunei"
+    ],
+    "capitals": [
+      "Bandar Seri Begawan"
+    ],
+    "accepted_capitals": {
+      "Bandar Seri Begawan": [
+        "Bandar Seri Begawan"
+      ]
+    },
+    "coordinates": {
+      "Bandar Seri Begawan": [4.9031, 114.9398]
+    }
+  },
+  "064": {
+    "id": "064",
+    "name": "Bhutan",
+    "accepted_country_names": [
+      "Bhutan"
+    ],
+    "capitals": [
+      "Thimphu"
+    ],
+    "accepted_capitals": {
+      "Thimphu": [
+        "Thimphu"
+      ]
+    },
+    "coordinates": {
+      "Thimphu": [27.4728, 89.6393]
+    }
+  },
+  "072": {
+    "id": "072",
+    "name": "Botswana",
+    "accepted_country_names": [
+      "Botswana"
+    ],
+    "capitals": [
+      "Gaborone"
+    ],
+    "accepted_capitals": {
+      "Gaborone": [
+        "Gaborone"
+      ]
+    },
+    "coordinates": {
+      "Gaborone": [-24.6282, 25.9231]
+    }
+  },
+  "140": {
+    "id": "140",
+    "name": "Central African Republic",
+    "accepted_country_names": [
+      "Central African Republic",
+      "CAR"
+    ],
+    "capitals": [
+      "Bangui"
+    ],
+    "accepted_capitals": {
+      "Bangui": [
+        "Bangui"
+      ]
+    },
+    "coordinates": {
+      "Bangui": [4.3947, 18.5582]
+    }
+  },
+  "124": {
+    "id": "124",
+    "name": "Canada",
+    "accepted_country_names": [
+      "CA",
+      "Canada"
+    ],
+    "capitals": [
+      "Ottawa"
+    ],
+    "accepted_capitals": {
+      "Ottawa": [
+        "Ottawa"
+      ]
+    },
+    "coordinates": {
+      "Ottawa": [45.4215, -75.6972]
+    }
+  },
+  "756": {
+    "id": "756",
+    "name": "Switzerland",
+    "accepted_country_names": [
+      "Switzerland"
+    ],
+    "capitals": [
+      "Bern"
+    ],
+    "accepted_capitals": {
+      "Bern": [
+        "Bern"
+      ]
+    },
+    "coordinates": {
+      "Bern": [46.9480, 7.4474]
+    }
+  },
+  "152": {
+    "id": "152",
+    "name": "Chile",
+    "accepted_country_names": [
+      "Chile"
+    ],
+    "capitals": [
+      "Santiago"
+    ],
+    "accepted_capitals": {
+      "Santiago": [
+        "Santiago"
+      ]
+    },
+    "coordinates": {
+      "Santiago": [-33.4489, -70.6693]
+    }
+  },
+  "156": {
+    "id": "156",
+    "name": "China",
+    "accepted_country_names": [
+      "China",
+      "People's Republic of China",
+      "PRC"
+    ],
+    "capitals": [
+      "Beijing"
+    ],
+    "accepted_capitals": {
+      "Beijing": [
+        "Beijing"
+      ]
+    },
+    "coordinates": {
+      "Beijing": [39.9042, 116.4074]
+    }
+  },
+  "384": {
+    "id": "384",
+    "name": "Ivory Coast",
+    "accepted_country_names": [
+      "Cote d'Ivoire",
+      "Côte d'Ivoire",
+      "Ivory Coast"
+    ],
+    "capitals": [
+      "Yamoussoukro"
+    ],
+    "accepted_capitals": {
+      "Yamoussoukro": [
+        "Yamoussoukro"
+      ]
+    },
+    "coordinates": {
+      "Yamoussoukro": [6.8276, -5.2893]
+    }
+  },
+  "120": {
+    "id": "120",
+    "name": "Cameroon",
+    "accepted_country_names": [
+      "Cameroon",
+      "Republic of Cameroon"
+    ],
+    "capitals": [
+      "Yaoundé"
+    ],
+    "accepted_capitals": {
+      "Yaoundé": [
+        "Yaoundé",
+        "Yaounde"
+      ]
+    },
+    "coordinates": {
+      "Yaoundé": [3.8480, 11.5021]
+    }
+  },
+  "180": {
+    "id": "180",
+    "name": "DR Congo",
+    "accepted_country_names": [
+      "DRC",
+      "DR Congo",
+      "Democratic Republic of Congo",
+      "Democratic Republic of the Congo"
+    ],
+    "capitals": [
+      "Kinshasa"
+    ],
+    "accepted_capitals": {
+      "Kinshasa": [
+        "Kinshasa"
+      ]
+    },
+    "coordinates": {
+      "Kinshasa": [-4.4419, 15.2663]
+    }
+  },
+  "178": {
+    "id": "178",
+    "name": "Congo",
+    "accepted_country_names": [
+      "Republic of the Congo",
+      "Republic of Congo",
+      "Congo"
+    ],
+    "capitals": [
+      "Brazzaville"
+    ],
+    "accepted_capitals": {
+      "Brazzaville": [
+        "Brazzaville"
+      ]
+    },
+    "coordinates": {
+      "Brazzaville": [-4.2634, 15.2429]
+    }
+  },
+  "170": {
+    "id": "170",
+    "name": "Colombia",
+    "accepted_country_names": [
+      "Republic of Colombia",
+      "Colombia"
+    ],
+    "capitals": [
+      "Bogotá"
+    ],
+    "accepted_capitals": {
+      "Bogotá": [
+        "Bogotá",
+        "Bogota"
+      ]
+    },
+    "coordinates": {
+      "Bogotá": [4.7110, -74.0721]
+    }
+  },
+  "174": {
+    "id": "174",
+    "name": "Comoros",
+    "accepted_country_names": [
+      "Comoros"
+    ],
+    "capitals": [
+      "Moroni"
+    ],
+    "accepted_capitals": {
+      "Moroni": [
+        "Moroni"
+      ]
+    },
+    "coordinates": {
+      "Moroni": [-11.7172, 43.2473]
+    }
+  },
+  "132": {
+    "id": "132",
+    "name": "Cape Verde",
+    "accepted_country_names": [
+      "Republic of Cabo Verde",
+      "Cape Verde",
+      "Cabo Verde"
+    ],
+    "capitals": [
+      "Praia"
+    ],
+    "accepted_capitals": {
+      "Praia": [
+        "Praia"
+      ]
+    },
+    "coordinates": {
+      "Praia": [14.9315, -23.5126]
+    }
+  },
+  "188": {
+    "id": "188",
+    "name": "Costa Rica",
+    "accepted_country_names": [
+      "Costa Rica"
+    ],
+    "capitals": [
+      "San José"
+    ],
+    "accepted_capitals": {
+      "San José": [
+        "San José",
+        "San Jose"
+      ]
+    },
+    "coordinates": {
+      "San José": [9.9281, -84.0907]
+    }
+  },
+  "192": {
+    "id": "192",
+    "name": "Cuba",
+    "accepted_country_names": [
+      "Cuba"
+    ],
+    "capitals": [
+      "Havana"
+    ],
+    "accepted_capitals": {
+      "Havana": [
+        "Havana"
+      ]
+    },
+    "coordinates": {
+      "Havana": [23.1136, -82.3666]
+    }
+  },
+  "196": {
+    "id": "196",
+    "name": "Cyprus",
+    "accepted_country_names": [
+      "Cyprus"
+    ],
+    "capitals": [
+      "Nicosia"
+    ],
+    "accepted_capitals": {
+      "Nicosia": [
+        "Nicosia"
+      ]
+    },
+    "coordinates": {
+      "Nicosia": [35.1856, 33.3823]
+    }
+  },
+  "203": {
+    "id": "203",
+    "name": "Czechia",
+    "accepted_country_names": [
+      "Czech Republic",
+      "Czechia"
+    ],
+    "capitals": [
+      "Prague"
+    ],
+    "accepted_capitals": {
+      "Prague": [
+        "Prague"
+      ]
+    },
+    "coordinates": {
+      "Prague": [50.0755, 14.4378]
+    }
+  },
+  "276": {
+    "id": "276",
+    "name": "Germany",
+    "accepted_country_names": [
+      "Germany"
+    ],
+    "capitals": [
+      "Berlin"
+    ],
+    "accepted_capitals": {
+      "Berlin": [
+        "Berlin"
+      ]
+    },
+    "coordinates": {
+      "Berlin": [52.5200, 13.4050]
+    }
+  },
+  "262": {
+    "id": "262",
+    "name": "Djibouti",
+    "accepted_country_names": [
+      "Djibouti"
+    ],
+    "capitals": [
+      "Djibouti"
+    ],
+    "accepted_capitals": {
+      "Djibouti": [
+        "Djibouti"
+      ]
+    },
+    "coordinates": {
+      "Djibouti": [11.8251, 42.5903]
+    }
+  },
+  "212": {
+    "id": "212",
+    "name": "Dominica",
+    "accepted_country_names": [
+      "Dominica"
+    ],
+    "capitals": [
+      "Roseau"
+    ],
+    "accepted_capitals": {
+      "Roseau": [
+        "Roseau"
+      ]
+    },
+    "coordinates": {
+      "Roseau": [15.3010, -61.3883]
+    }
+  },
+  "208": {
+    "id": "208",
+    "name": "Denmark",
+    "accepted_country_names": [
+      "Denmark"
+    ],
+    "capitals": [
+      "Copenhagen"
+    ],
+    "accepted_capitals": {
+      "Copenhagen": [
+        "Copenhagen"
+      ]
+    },
+    "coordinates": {
+      "Copenhagen": [55.6761, 12.5683]
+    }
+  },
+  "214": {
+    "id": "214",
+    "name": "Dominican Republic",
+    "accepted_country_names": [
+      "Dominican Republic"
+    ],
+    "capitals": [
+      "Santo Domingo"
+    ],
+    "accepted_capitals": {
+      "Santo Domingo": [
+        "Santo Domingo"
+      ]
+    },
+    "coordinates": {
+      "Santo Domingo": [18.4861, -69.9312]
+    }
+  },
+  "012": {
+    "id": "012",
+    "name": "Algeria",
+    "accepted_country_names": [
+      "Algeria"
+    ],
+    "capitals": [
+      "Algiers"
+    ],
+    "accepted_capitals": {
+      "Algiers": [
+        "Algiers"
+      ]
+    },
+    "coordinates": {
+      "Algiers": [36.7538, 3.0588]
+    }
+  },
+  "218": {
+    "id": "218",
+    "name": "Ecuador",
+    "accepted_country_names": [
+      "Ecuador"
+    ],
+    "capitals": [
+      "Quito"
+    ],
+    "accepted_capitals": {
+      "Quito": [
+        "Quito"
+      ]
+    },
+    "coordinates": {
+      "Quito": [-0.1807, -78.4678]
+    }
+  },
+  "818": {
+    "id": "818",
+    "name": "Egypt",
+    "accepted_country_names": [
+      "Egypt"
+    ],
+    "capitals": [
+      "Cairo"
+    ],
+    "accepted_capitals": {
+      "Cairo": [
+        "Cairo"
+      ]
+    },
+    "coordinates": {
+      "Cairo": [30.0444, 31.2357]
+    }
+  },
+  "232": {
+    "id": "232",
+    "name": "Eritrea",
+    "accepted_country_names": [
+      "Eritrea"
+    ],
+    "capitals": [
+      "Asmara"
+    ],
+    "accepted_capitals": {
+      "Asmara": [
+        "Asmara"
+      ]
+    },
+    "coordinates": {
+      "Asmara": [15.3229, 38.9250]
+    }
+  },
+  "732": {
+    "id": "732",
+    "name": "Western Sahara",
+    "accepted_country_names": [
+      "Western Sahara",
+      "Sahrawi Arab Democratic Republic"
+    ],
+    "capitals": [
+      "El Aaiún"
+    ],
+    "accepted_capitals": {
+      "El Aaiún": [
+        "El Aaiún",
+        "El Aaiun",
+        "Laayoune"
+      ]
+    },
+    "coordinates": {
+      "El Aaiún": [27.1253, -13.1825]
+    }
+  },
+  "724": {
+    "id": "724",
+    "name": "Spain",
+    "accepted_country_names": [
+      "Spain"
+    ],
+    "capitals": [
+      "Madrid"
+    ],
+    "accepted_capitals": {
+      "Madrid": [
+        "Madrid"
+      ]
+    },
+    "coordinates": {
+      "Madrid": [40.4168, -3.7038]
+    }
+  },
+  "233": {
+    "id": "233",
+    "name": "Estonia",
+    "accepted_country_names": [
+      "Estonia"
+    ],
+    "capitals": [
+      "Tallinn"
+    ],
+    "accepted_capitals": {
+      "Tallinn": [
+        "Tallinn"
+      ]
+    },
+    "coordinates": {
+      "Tallinn": [59.4370, 24.7536]
+    }
+  },
+  "231": {
+    "id": "231",
+    "name": "Ethiopia",
+    "accepted_country_names": [
+      "Ethiopia"
+    ],
+    "capitals": [
+      "Addis Ababa"
+    ],
+    "accepted_capitals": {
+      "Addis Ababa": [
+        "Addis Ababa"
+      ]
+    },
+    "coordinates": {
+      "Addis Ababa": [9.0300, 38.7400]
+    }
+  },
+  "246": {
+    "id": "246",
+    "name": "Finland",
+    "accepted_country_names": [
+      "Finland"
+    ],
+    "capitals": [
+      "Helsinki"
+    ],
+    "accepted_capitals": {
+      "Helsinki": [
+        "Helsinki"
+      ]
+    },
+    "coordinates": {
+      "Helsinki": [60.1699, 24.9384]
+    }
+  },
+  "242": {
+    "id": "242",
+    "name": "Fiji",
+    "accepted_country_names": [
+      "Fiji"
+    ],
+    "capitals": [
+      "Suva"
+    ],
+    "accepted_capitals": {
+      "Suva": [
+        "Suva"
+      ]
+    },
+    "coordinates": {
+      "Suva": [-18.1416, 178.4419]
+    }
+  },
+  "250": {
+    "id": "250",
+    "name": "France",
+    "accepted_country_names": [
+      "France"
+    ],
+    "capitals": [
+      "Paris"
+    ],
+    "accepted_capitals": {
+      "Paris": [
+        "Paris"
+      ]
+    },
+    "coordinates": {
+      "Paris": [48.8566, 2.3522]
+    }
+  },
+  "583": {
+    "id": "583",
+    "name": "Micronesia",
+    "accepted_country_names": [
+      "Federated States of Micronesia",
+      "Micronesia",
+      "FSM"
+    ],
+    "capitals": [
+      "Palikir"
+    ],
+    "accepted_capitals": {
+      "Palikir": [
+        "Palikir"
+      ]
+    },
+    "coordinates": {
+      "Palikir": [6.9248, 158.1611]
+    }
+  },
+  "266": {
+    "id": "266",
+    "name": "Gabon",
+    "accepted_country_names": [
+      "Gabon"
+    ],
+    "capitals": [
+      "Libreville"
+    ],
+    "accepted_capitals": {
+      "Libreville": [
+        "Libreville"
+      ]
+    },
+    "coordinates": {
+      "Libreville": [0.4162, 9.4673]
+    }
+  },
+  "826": {
+    "id": "826",
+    "name": "United Kingdom",
+    "accepted_country_names": [
+      "United Kingdom",
+      "UK"
+    ],
+    "capitals": [
+      "London"
+    ],
+    "accepted_capitals": {
+      "London": [
+        "London"
+      ]
+    },
+    "coordinates": {
+      "London": [51.5074, -0.1278]
+    }
+  },
+  "268": {
+    "id": "268",
+    "name": "Georgia",
+    "accepted_country_names": [
+      "Georgia"
+    ],
+    "capitals": [
+      "Tbilisi"
+    ],
+    "accepted_capitals": {
+      "Tbilisi": [
+        "Tbilisi"
+      ]
+    },
+    "coordinates": {
+      "Tbilisi": [41.7151, 44.8271]
+    }
+  },
+  "288": {
+    "id": "288",
+    "name": "Ghana",
+    "accepted_country_names": [
+      "Ghana"
+    ],
+    "capitals": [
+      "Accra"
+    ],
+    "accepted_capitals": {
+      "Accra": [
+        "Accra"
+      ]
+    },
+    "coordinates": {
+      "Accra": [5.6037, -0.1870]
+    }
+  },
+  "324": {
+    "id": "324",
+    "name": "Guinea",
+    "accepted_country_names": [
+      "Republic of Guinea",
+      "Guinea"
+    ],
+    "capitals": [
+      "Conakry"
+    ],
+    "accepted_capitals": {
+      "Conakry": [
+        "Conakry"
+      ]
+    },
+    "coordinates": {
+      "Conakry": [9.6412, -13.5784]
+    }
+  },
+  "270": {
+    "id": "270",
+    "name": "Gambia",
+    "accepted_country_names": [
+      "Republic of the Gambia",
+      "Gambia",
+      "The Gambia"
+    ],
+    "capitals": [
+      "Banjul"
+    ],
+    "accepted_capitals": {
+      "Banjul": [
+        "Banjul"
+      ]
+    },
+    "coordinates": {
+      "Banjul": [13.4549, -16.5790]
+    }
+  },
+  "624": {
+    "id": "624",
+    "name": "Guinea-Bissau",
+    "accepted_country_names": [
+      "Guinea-Bissau"
+    ],
+    "capitals": [
+      "Bissau"
+    ],
+    "accepted_capitals": {
+      "Bissau": [
+        "Bissau"
+      ]
+    },
+    "coordinates": {
+      "Bissau": [11.8817, -15.6178]
+    }
+  },
+  "226": {
+    "id": "226",
+    "name": "Equatorial Guinea",
+    "accepted_country_names": [
+      "Equatorial Guinea"
+    ],
+    "capitals": [
+      "Ciudad de la Paz"
+    ],
+    "accepted_capitals": {
+      "Ciudad de la Paz": [
+        "Ciudad de la Paz"
+      ]
+    },
+    "coordinates": {
+      "Ciudad de la Paz": [1.5833, 10.8333]
+    }
+  },
+  "300": {
+    "id": "300",
+    "name": "Greece",
+    "accepted_country_names": [
+      "Greece"
+    ],
+    "capitals": [
+      "Athens"
+    ],
+    "accepted_capitals": {
+      "Athens": [
+        "Athens"
+      ]
+    },
+    "coordinates": {
+      "Athens": [37.9838, 23.7275]
+    }
+  },
+  "308": {
+    "id": "308",
+    "name": "Grenada",
+    "accepted_country_names": [
+      "Grenada"
+    ],
+    "capitals": [
+      "St. George's"
+    ],
+    "accepted_capitals": {
+      "St. George's": [
+        "St. George's",
+        "St George's",
+        "Saint George's"
+      ]
+    },
+    "coordinates": {
+      "St. George's": [12.0561, -61.7488]
+    }
+  },
+  "320": {
+    "id": "320",
+    "name": "Guatemala",
+    "accepted_country_names": [
+      "Guatemala"
+    ],
+    "capitals": [
+      "Guatemala City"
+    ],
+    "accepted_capitals": {
+      "Guatemala City": [
+        "Guatemala City"
+      ]
+    },
+    "coordinates": {
+      "Guatemala City": [14.6349, -90.5069]
+    }
+  },
+  "328": {
+    "id": "328",
+    "name": "Guyana",
+    "accepted_country_names": [
+      "Guyana"
+    ],
+    "capitals": [
+      "Georgetown"
+    ],
+    "accepted_capitals": {
+      "Georgetown": [
+        "Georgetown"
+      ]
+    },
+    "coordinates": {
+      "Georgetown": [6.8013, -58.1551]
+    }
+  },
+  "340": {
+    "id": "340",
+    "name": "Honduras",
+    "accepted_country_names": [
+      "Honduras"
+    ],
+    "capitals": [
+      "Tegucigalpa"
+    ],
+    "accepted_capitals": {
+      "Tegucigalpa": [
+        "Tegucigalpa"
+      ]
+    },
+    "coordinates": {
+      "Tegucigalpa": [14.0723, -87.1921]
+    }
+  },
+  "191": {
+    "id": "191",
+    "name": "Croatia",
+    "accepted_country_names": [
+      "Croatia"
+    ],
+    "capitals": [
+      "Zagreb"
+    ],
+    "accepted_capitals": {
+      "Zagreb": [
+        "Zagreb"
+      ]
+    },
+    "coordinates": {
+      "Zagreb": [45.8150, 15.9819]
+    }
+  },
+  "332": {
+    "id": "332",
+    "name": "Haiti",
+    "accepted_country_names": [
+      "Haiti"
+    ],
+    "capitals": [
+      "Port-au-Prince"
+    ],
+    "accepted_capitals": {
+      "Port-au-Prince": [
+        "Port-au-Prince"
+      ]
+    },
+    "coordinates": {
+      "Port-au-Prince": [18.5944, -72.3074]
+    }
+  },
+  "348": {
+    "id": "348",
+    "name": "Hungary",
+    "accepted_country_names": [
+      "Hungary"
+    ],
+    "capitals": [
+      "Budapest"
+    ],
+    "accepted_capitals": {
+      "Budapest": [
+        "Budapest"
+      ]
+    },
+    "coordinates": {
+      "Budapest": [47.4979, 19.0402]
+    }
+  },
+  "360": {
+    "id": "360",
+    "name": "Indonesia",
+    "accepted_country_names": [
+      "Indonesia"
+    ],
+    "capitals": [
+      "Jakarta"
+    ],
+    "accepted_capitals": {
+      "Jakarta": [
+        "Jakarta"
+      ]
+    },
+    "coordinates": {
+      "Jakarta": [-6.2088, 106.8456]
+    }
+  },
+  "356": {
+    "id": "356",
+    "name": "India",
+    "accepted_country_names": [
+      "India"
+    ],
+    "capitals": [
+      "New Delhi"
+    ],
+    "accepted_capitals": {
+      "New Delhi": [
+        "New Delhi"
+      ]
+    },
+    "coordinates": {
+      "New Delhi": [28.6139, 77.2090]
+    }
+  },
+  "372": {
+    "id": "372",
+    "name": "Ireland",
+    "accepted_country_names": [
+      "Ireland"
+    ],
+    "capitals": [
+      "Dublin"
+    ],
+    "accepted_capitals": {
+      "Dublin": [
+        "Dublin"
+      ]
+    },
+    "coordinates": {
+      "Dublin": [53.3498, -6.2603]
+    }
+  },
+  "364": {
+    "id": "364",
+    "name": "Iran",
+    "accepted_country_names": [
+      "Iran"
+    ],
+    "capitals": [
+      "Tehran"
+    ],
+    "accepted_capitals": {
+      "Tehran": [
+        "Tehran"
+      ]
+    },
+    "coordinates": {
+      "Tehran": [35.6892, 51.3890]
+    }
+  },
+  "368": {
+    "id": "368",
+    "name": "Iraq",
+    "accepted_country_names": [
+      "Iraq"
+    ],
+    "capitals": [
+      "Baghdad"
+    ],
+    "accepted_capitals": {
+      "Baghdad": [
+        "Baghdad"
+      ]
+    },
+    "coordinates": {
+      "Baghdad": [33.3152, 44.3661]
+    }
+  },
+  "352": {
+    "id": "352",
+    "name": "Iceland",
+    "accepted_country_names": [
+      "Iceland"
+    ],
+    "capitals": [
+      "Reykjavik"
+    ],
+    "accepted_capitals": {
+      "Reykjavik": [
+        "Reykjavik"
+      ]
+    },
+    "coordinates": {
+      "Reykjavik": [64.1466, -21.9426]
+    }
+  },
+  "376": {
+    "id": "376",
+    "name": "Israel",
+    "accepted_country_names": [
+      "Israel"
+    ],
+    "capitals": [
+      "Jerusalem"
+    ],
+    "accepted_capitals": {
+      "Jerusalem": [
+        "Jerusalem"
+      ]
+    },
+    "coordinates": {
+      "Jerusalem": [31.7683, 35.2137]
+    }
+  },
+  "380": {
+    "id": "380",
+    "name": "Italy",
+    "accepted_country_names": [
+      "Italy"
+    ],
+    "capitals": [
+      "Rome"
+    ],
+    "accepted_capitals": {
+      "Rome": [
+        "Rome"
+      ]
+    },
+    "coordinates": {
+      "Rome": [41.9028, 12.4964]
+    }
+  },
+  "383": {
+    "id": "383",
+    "name": "Kosovo",
+    "accepted_country_names": [
+      "Kosovo",
+      "Republic of Kosovo"
+    ],
+    "capitals": [
+      "Pristina"
+    ],
+    "accepted_capitals": {
+      "Pristina": [
+        "Pristina",
+        "Prishtina"
+      ]
+    },
+    "coordinates": {
+      "Pristina": [42.6629, 21.1655]
+    }
+  },
+  "388": {
+    "id": "388",
+    "name": "Jamaica",
+    "accepted_country_names": [
+      "Jamaica"
+    ],
+    "capitals": [
+      "Kingston"
+    ],
+    "accepted_capitals": {
+      "Kingston": [
+        "Kingston"
+      ]
+    },
+    "coordinates": {
+      "Kingston": [17.9714, -76.7936]
+    }
+  },
+  "400": {
+    "id": "400",
+    "name": "Jordan",
+    "accepted_country_names": [
+      "Jordan"
+    ],
+    "capitals": [
+      "Amman"
+    ],
+    "accepted_capitals": {
+      "Amman": [
+        "Amman"
+      ]
+    },
+    "coordinates": {
+      "Amman": [31.9454, 35.9284]
+    }
+  },
+  "392": {
+    "id": "392",
+    "name": "Japan",
+    "accepted_country_names": [
+      "Japan"
+    ],
+    "capitals": [
+      "Tokyo"
+    ],
+    "accepted_capitals": {
+      "Tokyo": [
+        "Tokyo"
+      ]
+    },
+    "coordinates": {
+      "Tokyo": [35.6762, 139.6503]
+    }
+  },
+  "398": {
+    "id": "398",
+    "name": "Kazakhstan",
+    "accepted_country_names": [
+      "Kazakhstan"
+    ],
+    "capitals": [
+      "Astana"
+    ],
+    "accepted_capitals": {
+      "Astana": [
+        "Astana"
+      ]
+    },
+    "coordinates": {
+      "Astana": [51.1694, 71.4491]
+    }
+  },
+  "404": {
+    "id": "404",
+    "name": "Kenya",
+    "accepted_country_names": [
+      "Kenya"
+    ],
+    "capitals": [
+      "Nairobi"
+    ],
+    "accepted_capitals": {
+      "Nairobi": [
+        "Nairobi"
+      ]
+    },
+    "coordinates": {
+      "Nairobi": [-1.2921, 36.8219]
+    }
+  },
+  "417": {
+    "id": "417",
+    "name": "Kyrgyzstan",
+    "accepted_country_names": [
+      "Kyrgyzstan"
+    ],
+    "capitals": [
+      "Bishkek"
+    ],
+    "accepted_capitals": {
+      "Bishkek": [
+        "Bishkek"
+      ]
+    },
+    "coordinates": {
+      "Bishkek": [42.8746, 74.5698]
+    }
+  },
+  "116": {
+    "id": "116",
+    "name": "Cambodia",
+    "accepted_country_names": [
+      "Cambodia"
+    ],
+    "capitals": [
+      "Phnom Penh"
+    ],
+    "accepted_capitals": {
+      "Phnom Penh": [
+        "Phnom Penh"
+      ]
+    },
+    "coordinates": {
+      "Phnom Penh": [11.5564, 104.9282]
+    }
+  },
+  "296": {
+    "id": "296",
+    "name": "Kiribati",
+    "accepted_country_names": [
+      "Kiribati"
+    ],
+    "capitals": [
+      "South Tarawa"
+    ],
+    "accepted_capitals": {
+      "South Tarawa": [
+        "South Tarawa",
+        "Tarawa"
+      ]
+    },
+    "coordinates": {
+      "South Tarawa": [1.3292, 172.9785]
+    }
+  },
+  "659": {
+    "id": "659",
+    "name": "Saint Kitts and Nevis",
+    "accepted_country_names": [
+      "Saint Kitts and Nevis",
+      "St. Kitts and Nevis",
+      "St Kitts and Nevis",
+      "Saint Kitts & Nevis",
+      "St. Kitts & Nevis",
+      "St Kitts & Nevis"
+    ],
+    "capitals": [
+      "Basseterre"
+    ],
+    "accepted_capitals": {
+      "Basseterre": [
+        "Basseterre"
+      ]
+    },
+    "coordinates": {
+      "Basseterre": [17.3000, -62.7333]
+    }
+  },
+  "410": {
+    "id": "410",
+    "name": "South Korea",
+    "accepted_country_names": [
+      "South Korea",
+      "Republic of Korea",
+      "ROK"
+    ],
+    "capitals": [
+      "Seoul"
+    ],
+    "accepted_capitals": {
+      "Seoul": [
+        "Seoul"
+      ]
+    },
+    "coordinates": {
+      "Seoul": [37.5665, 126.9780]
+    }
+  },
+  "414": {
+    "id": "414",
+    "name": "Kuwait",
+    "accepted_country_names": [
+      "Kuwait"
+    ],
+    "capitals": [
+      "Kuwait City"
+    ],
+    "accepted_capitals": {
+      "Kuwait City": [
+        "Kuwait City"
+      ]
+    },
+    "coordinates": {
+      "Kuwait City": [29.3759, 47.9774]
+    }
+  },
+  "418": {
+    "id": "418",
+    "name": "Laos",
+    "accepted_country_names": [
+      "Laos"
+    ],
+    "capitals": [
+      "Vientiane"
+    ],
+    "accepted_capitals": {
+      "Vientiane": [
+        "Vientiane"
+      ]
+    },
+    "coordinates": {
+      "Vientiane": [17.9757, 102.6331]
+    }
+  },
+  "422": {
+    "id": "422",
+    "name": "Lebanon",
+    "accepted_country_names": [
+      "Lebanon"
+    ],
+    "capitals": [
+      "Beirut"
+    ],
+    "accepted_capitals": {
+      "Beirut": [
+        "Beirut"
+      ]
+    },
+    "coordinates": {
+      "Beirut": [33.8938, 35.5018]
+    }
+  },
+  "430": {
+    "id": "430",
+    "name": "Liberia",
+    "accepted_country_names": [
+      "Liberia"
+    ],
+    "capitals": [
+      "Monrovia"
+    ],
+    "accepted_capitals": {
+      "Monrovia": [
+        "Monrovia"
+      ]
+    },
+    "coordinates": {
+      "Monrovia": [6.3156, -10.8074]
+    }
+  },
+  "434": {
+    "id": "434",
+    "name": "Libya",
+    "accepted_country_names": [
+      "Libya"
+    ],
+    "capitals": [
+      "Tripoli"
+    ],
+    "accepted_capitals": {
+      "Tripoli": [
+        "Tripoli"
+      ]
+    },
+    "coordinates": {
+      "Tripoli": [32.8872, 13.1913]
+    }
+  },
+  "662": {
+    "id": "662",
+    "name": "Saint Lucia",
+    "accepted_country_names": [
+      "Saint Lucia",
+      "St. Lucia",
+      "St Lucia"
+    ],
+    "capitals": [
+      "Castries"
+    ],
+    "accepted_capitals": {
+      "Castries": [
+        "Castries"
+      ]
+    },
+    "coordinates": {
+      "Castries": [14.0101, -60.9875]
+    }
+  },
+  "438": {
+    "id": "438",
+    "name": "Liechtenstein",
+    "accepted_country_names": [
+      "Liechtenstein"
+    ],
+    "capitals": [
+      "Vaduz"
+    ],
+    "accepted_capitals": {
+      "Vaduz": [
+        "Vaduz"
+      ]
+    },
+    "coordinates": {
+      "Vaduz": [47.1410, 9.5209]
+    }
+  },
+  "144": {
+    "id": "144",
+    "name": "Sri Lanka",
+    "accepted_country_names": [
+      "Sri Lanka"
+    ],
+    "capitals": [
+      "Colombo",
+      "Sri Jayawardenepura Kotte"
+    ],
+    "accepted_capitals": {
+      "Colombo": [
+        "Colombo"
+      ],
+      "Sri Jayawardenepura Kotte": [
+        "Sri Jayawardenepura Kotte",
+        "Kotte",
+        "Sri Jayawardenepura"
+      ]
+    },
+    "coordinates": {
+      "Colombo": [6.9271, 79.8612],
+      "Sri Jayawardenepura Kotte": [6.8941, 79.9025]
+    }
+  },
+  "426": {
+    "id": "426",
+    "name": "Lesotho",
+    "accepted_country_names": [
+      "Lesotho"
+    ],
+    "capitals": [
+      "Maseru"
+    ],
+    "accepted_capitals": {
+      "Maseru": [
+        "Maseru"
+      ]
+    },
+    "coordinates": {
+      "Maseru": [-29.3151, 27.4869]
+    }
+  },
+  "440": {
+    "id": "440",
+    "name": "Lithuania",
+    "accepted_country_names": [
+      "Lithuania"
+    ],
+    "capitals": [
+      "Vilnius"
+    ],
+    "accepted_capitals": {
+      "Vilnius": [
+        "Vilnius"
+      ]
+    },
+    "coordinates": {
+      "Vilnius": [54.6872, 25.2797]
+    }
+  },
+  "442": {
+    "id": "442",
+    "name": "Luxembourg",
+    "accepted_country_names": [
+      "Luxembourg"
+    ],
+    "capitals": [
+      "Luxembourg"
+    ],
+    "accepted_capitals": {
+      "Luxembourg": [
+        "Luxembourg"
+      ]
+    },
+    "coordinates": {
+      "Luxembourg": [49.6116, 6.1319]
+    }
+  },
+  "428": {
+    "id": "428",
+    "name": "Latvia",
+    "accepted_country_names": [
+      "Latvia"
+    ],
+    "capitals": [
+      "Riga"
+    ],
+    "accepted_capitals": {
+      "Riga": [
+        "Riga"
+      ]
+    },
+    "coordinates": {
+      "Riga": [56.9496, 24.1052]
+    }
+  },
+  "504": {
+    "id": "504",
+    "name": "Morocco",
+    "accepted_country_names": [
+      "Morocco"
+    ],
+    "capitals": [
+      "Rabat"
+    ],
+    "accepted_capitals": {
+      "Rabat": [
+        "Rabat"
+      ]
+    },
+    "coordinates": {
+      "Rabat": [34.0209, -6.8417]
+    }
+  },
+  "492": {
+    "id": "492",
+    "name": "Monaco",
+    "accepted_country_names": [
+      "Monaco"
+    ],
+    "capitals": [
+      "Monaco"
+    ],
+    "accepted_capitals": {
+      "Monaco": [
+        "Monaco"
+      ]
+    },
+    "coordinates": {
+      "Monaco": [43.7384, 7.4246]
+    }
+  },
+  "498": {
+    "id": "498",
+    "name": "Moldova",
+    "accepted_country_names": [
+      "Moldova"
+    ],
+    "capitals": [
+      "Chișinău"
+    ],
+    "accepted_capitals": {
+      "Chișinău": [
+        "Chișinău",
+        "Chisinau"
+      ]
+    },
+    "coordinates": {
+      "Chișinău": [47.0105, 28.8638]
+    }
+  },
+  "450": {
+    "id": "450",
+    "name": "Madagascar",
+    "accepted_country_names": [
+      "Madagascar"
+    ],
+    "capitals": [
+      "Antananarivo"
+    ],
+    "accepted_capitals": {
+      "Antananarivo": [
+        "Antananarivo"
+      ]
+    },
+    "coordinates": {
+      "Antananarivo": [-18.8792, 47.5079]
+    }
+  },
+  "462": {
+    "id": "462",
+    "name": "Maldives",
+    "accepted_country_names": [
+      "Maldives",
+      "The Maldives"
+    ],
+    "capitals": [
+      "Malé"
+    ],
+    "accepted_capitals": {
+      "Malé": [
+        "Malé",
+        "Male"
+      ]
+    },
+    "coordinates": {
+      "Malé": [4.1755, 73.5093]
+    }
+  },
+  "484": {
+    "id": "484",
+    "name": "Mexico",
+    "accepted_country_names": [
+      "Mexico"
+    ],
+    "capitals": [
+      "Mexico City"
+    ],
+    "accepted_capitals": {
+      "Mexico City": [
+        "Mexico City"
+      ]
+    },
+    "coordinates": {
+      "Mexico City": [19.4326, -99.1332]
+    }
+  },
+  "584": {
+    "id": "584",
+    "name": "Marshall Islands",
+    "accepted_country_names": [
+      "Marshall Islands"
+    ],
+    "capitals": [
+      "Majuro"
+    ],
+    "accepted_capitals": {
+      "Majuro": [
+        "Majuro"
+      ]
+    },
+    "coordinates": {
+      "Majuro": [7.0897, 171.3803]
+    }
+  },
+  "807": {
+    "id": "807",
+    "name": "North Macedonia",
+    "accepted_country_names": [
+      "North Macedonia"
+    ],
+    "capitals": [
+      "Skopje"
+    ],
+    "accepted_capitals": {
+      "Skopje": [
+        "Skopje"
+      ]
+    },
+    "coordinates": {
+      "Skopje": [41.9973, 21.4280]
+    }
+  },
+  "466": {
+    "id": "466",
+    "name": "Mali",
+    "accepted_country_names": [
+      "Mali"
+    ],
+    "capitals": [
+      "Bamako"
+    ],
+    "accepted_capitals": {
+      "Bamako": [
+        "Bamako"
+      ]
+    },
+    "coordinates": {
+      "Bamako": [12.6392, -8.0029]
+    }
+  },
+  "470": {
+    "id": "470",
+    "name": "Malta",
+    "accepted_country_names": [
+      "Malta"
+    ],
+    "capitals": [
+      "Valletta"
+    ],
+    "accepted_capitals": {
+      "Valletta": [
+        "Valletta"
+      ]
+    },
+    "coordinates": {
+      "Valletta": [35.8997, 14.5148]
+    }
+  },
+  "104": {
+    "id": "104",
+    "name": "Myanmar",
+    "accepted_country_names": [
+      "Myanmar"
+    ],
+    "capitals": [
+      "Naypyidaw"
+    ],
+    "accepted_capitals": {
+      "Naypyidaw": [
+        "Naypyidaw"
+      ]
+    },
+    "coordinates": {
+      "Naypyidaw": [19.7633, 96.0785]
+    }
+  },
+  "499": {
+    "id": "499",
+    "name": "Montenegro",
+    "accepted_country_names": [
+      "Montenegro"
+    ],
+    "capitals": [
+      "Podgorica"
+    ],
+    "accepted_capitals": {
+      "Podgorica": [
+        "Podgorica"
+      ]
+    },
+    "coordinates": {
+      "Podgorica": [42.4304, 19.2594]
+    }
+  },
+  "496": {
+    "id": "496",
+    "name": "Mongolia",
+    "accepted_country_names": [
+      "Mongolia"
+    ],
+    "capitals": [
+      "Ulaanbaatar"
+    ],
+    "accepted_capitals": {
+      "Ulaanbaatar": [
+        "Ulaanbaatar"
+      ]
+    },
+    "coordinates": {
+      "Ulaanbaatar": [47.8864, 106.9057]
+    }
+  },
+  "508": {
+    "id": "508",
+    "name": "Mozambique",
+    "accepted_country_names": [
+      "Mozambique"
+    ],
+    "capitals": [
+      "Maputo"
+    ],
+    "accepted_capitals": {
+      "Maputo": [
+        "Maputo"
+      ]
+    },
+    "coordinates": {
+      "Maputo": [-25.9692, 32.5732]
+    }
+  },
+  "478": {
+    "id": "478",
+    "name": "Mauritania",
+    "accepted_country_names": [
+      "Mauritania"
+    ],
+    "capitals": [
+      "Nouakchott"
+    ],
+    "accepted_capitals": {
+      "Nouakchott": [
+        "Nouakchott"
+      ]
+    },
+    "coordinates": {
+      "Nouakchott": [18.0735, -15.9582]
+    }
+  },
+  "480": {
+    "id": "480",
+    "name": "Mauritius",
+    "accepted_country_names": [
+      "Mauritius"
+    ],
+    "capitals": [
+      "Port Louis"
+    ],
+    "accepted_capitals": {
+      "Port Louis": [
+        "Port Louis"
+      ]
+    },
+    "coordinates": {
+      "Port Louis": [-20.1609, 57.5012]
+    }
+  },
+  "454": {
+    "id": "454",
+    "name": "Malawi",
+    "accepted_country_names": [
+      "Malawi"
+    ],
+    "capitals": [
+      "Lilongwe"
+    ],
+    "accepted_capitals": {
+      "Lilongwe": [
+        "Lilongwe"
+      ]
+    },
+    "coordinates": {
+      "Lilongwe": [-13.9626, 33.7741]
+    }
+  },
+  "458": {
+    "id": "458",
+    "name": "Malaysia",
+    "accepted_country_names": [
+      "Malaysia"
+    ],
+    "capitals": [
+      "Kuala Lumpur"
+    ],
+    "accepted_capitals": {
+      "Kuala Lumpur": [
+        "Kuala Lumpur"
+      ]
+    },
+    "coordinates": {
+      "Kuala Lumpur": [3.1390, 101.6869]
+    }
+  },
+  "516": {
+    "id": "516",
+    "name": "Namibia",
+    "accepted_country_names": [
+      "Namibia"
+    ],
+    "capitals": [
+      "Windhoek"
+    ],
+    "accepted_capitals": {
+      "Windhoek": [
+        "Windhoek"
+      ]
+    },
+    "coordinates": {
+      "Windhoek": [-22.5609, 17.0658]
+    }
+  },
+  "562": {
+    "id": "562",
+    "name": "Niger",
+    "accepted_country_names": [
+      "Niger"
+    ],
+    "capitals": [
+      "Niamey"
+    ],
+    "accepted_capitals": {
+      "Niamey": [
+        "Niamey"
+      ]
+    },
+    "coordinates": {
+      "Niamey": [13.5116, 2.1254]
+    }
+  },
+  "566": {
+    "id": "566",
+    "name": "Nigeria",
+    "accepted_country_names": [
+      "Nigeria"
+    ],
+    "capitals": [
+      "Abuja"
+    ],
+    "accepted_capitals": {
+      "Abuja": [
+        "Abuja"
+      ]
+    },
+    "coordinates": {
+      "Abuja": [9.0765, 7.3986]
+    }
+  },
+  "558": {
+    "id": "558",
+    "name": "Nicaragua",
+    "accepted_country_names": [
+      "Nicaragua"
+    ],
+    "capitals": [
+      "Managua"
+    ],
+    "accepted_capitals": {
+      "Managua": [
+        "Managua"
+      ]
+    },
+    "coordinates": {
+      "Managua": [12.1149, -86.2362]
+    }
+  },
+  "528": {
+    "id": "528",
+    "name": "Netherlands",
+    "accepted_country_names": [
+      "The Netherlands",
+      "Netherlands"
+    ],
+    "capitals": [
+      "Amsterdam"
+    ],
+    "accepted_capitals": {
+      "Amsterdam": [
+        "Amsterdam"
+      ]
+    },
+    "coordinates": {
+      "Amsterdam": [52.3676, 4.9041]
+    }
+  },
+  "578": {
+    "id": "578",
+    "name": "Norway",
+    "accepted_country_names": [
+      "Norway"
+    ],
+    "capitals": [
+      "Oslo"
+    ],
+    "accepted_capitals": {
+      "Oslo": [
+        "Oslo"
+      ]
+    },
+    "coordinates": {
+      "Oslo": [59.9139, 10.7522]
+    }
+  },
+  "524": {
+    "id": "524",
+    "name": "Nepal",
+    "accepted_country_names": [
+      "Nepal"
+    ],
+    "capitals": [
+      "Kathmandu"
+    ],
+    "accepted_capitals": {
+      "Kathmandu": [
+        "Kathmandu"
+      ]
+    },
+    "coordinates": {
+      "Kathmandu": [27.7172, 85.3240]
+    }
+  },
+  "520": {
+    "id": "520",
+    "name": "Nauru",
+    "accepted_country_names": [
+      "Nauru"
+    ],
+    "capitals": [
+      "Yaren"
+    ],
+    "accepted_capitals": {
+      "Yaren": [
+        "Yaren"
+      ]
+    },
+    "coordinates": {
+      "Yaren": [-0.5467, 166.9209]
+    }
+  },
+  "554": {
+    "id": "554",
+    "name": "New Zealand",
+    "accepted_country_names": [
+      "New Zealand"
+    ],
+    "capitals": [
+      "Wellington"
+    ],
+    "accepted_capitals": {
+      "Wellington": [
+        "Wellington"
+      ]
+    },
+    "coordinates": {
+      "Wellington": [-41.2865, 174.7762]
+    }
+  },
+  "512": {
+    "id": "512",
+    "name": "Oman",
+    "accepted_country_names": [
+      "Oman"
+    ],
+    "capitals": [
+      "Muscat"
+    ],
+    "accepted_capitals": {
+      "Muscat": [
+        "Muscat"
+      ]
+    },
+    "coordinates": {
+      "Muscat": [23.5880, 58.3829]
+    }
+  },
+  "586": {
+    "id": "586",
+    "name": "Pakistan",
+    "accepted_country_names": [
+      "Pakistan"
+    ],
+    "capitals": [
+      "Islamabad"
+    ],
+    "accepted_capitals": {
+      "Islamabad": [
+        "Islamabad"
+      ]
+    },
+    "coordinates": {
+      "Islamabad": [33.6844, 73.0479]
+    }
+  },
+  "591": {
+    "id": "591",
+    "name": "Panama",
+    "accepted_country_names": [
+      "Panama"
+    ],
+    "capitals": [
+      "Panama City"
+    ],
+    "accepted_capitals": {
+      "Panama City": [
+        "Panama City"
+      ]
+    },
+    "coordinates": {
+      "Panama City": [8.9824, -79.5199]
+    }
+  },
+  "604": {
+    "id": "604",
+    "name": "Peru",
+    "accepted_country_names": [
+      "Peru"
+    ],
+    "capitals": [
+      "Lima"
+    ],
+    "accepted_capitals": {
+      "Lima": [
+        "Lima"
+      ]
+    },
+    "coordinates": {
+      "Lima": [-12.0464, -77.0428]
+    }
+  },
+  "608": {
+    "id": "608",
+    "name": "Philippines",
+    "accepted_country_names": [
+      "Philippines",
+      "The Philippines"
+    ],
+    "capitals": [
+      "Manila"
+    ],
+    "accepted_capitals": {
+      "Manila": [
+        "Manila"
+      ]
+    },
+    "coordinates": {
+      "Manila": [14.5995, 120.9842]
+    }
+  },
+  "585": {
+    "id": "585",
+    "name": "Palau",
+    "accepted_country_names": [
+      "Palau"
+    ],
+    "capitals": [
+      "Ngerulmud"
+    ],
+    "accepted_capitals": {
+      "Ngerulmud": [
+        "Ngerulmud"
+      ]
+    },
+    "coordinates": {
+      "Ngerulmud": [7.5004, 134.6242]
+    }
+  },
+  "598": {
+    "id": "598",
+    "name": "Papua New Guinea",
+    "accepted_country_names": [
+      "PNG",
+      "Papua New Guinea"
+    ],
+    "capitals": [
+      "Port Moresby"
+    ],
+    "accepted_capitals": {
+      "Port Moresby": [
+        "Port Moresby"
+      ]
+    },
+    "coordinates": {
+      "Port Moresby": [-9.4438, 147.1803]
+    }
+  },
+  "616": {
+    "id": "616",
+    "name": "Poland",
+    "accepted_country_names": [
+      "Poland"
+    ],
+    "capitals": [
+      "Warsaw"
+    ],
+    "accepted_capitals": {
+      "Warsaw": [
+        "Warsaw"
+      ]
+    },
+    "coordinates": {
+      "Warsaw": [52.2297, 21.0122]
+    }
+  },
+  "408": {
+    "id": "408",
+    "name": "North Korea",
+    "accepted_country_names": [
+      "Democratic People's Republic of Korea",
+      "DPRK",
+      "North Korea"
+    ],
+    "capitals": [
+      "Pyongyang"
+    ],
+    "accepted_capitals": {
+      "Pyongyang": [
+        "Pyongyang"
+      ]
+    },
+    "coordinates": {
+      "Pyongyang": [39.0392, 125.7625]
+    }
+  },
+  "620": {
+    "id": "620",
+    "name": "Portugal",
+    "accepted_country_names": [
+      "Portugal"
+    ],
+    "capitals": [
+      "Lisbon"
+    ],
+    "accepted_capitals": {
+      "Lisbon": [
+        "Lisbon"
+      ]
+    },
+    "coordinates": {
+      "Lisbon": [38.7223, -9.1393]
+    }
+  },
+  "600": {
+    "id": "600",
+    "name": "Paraguay",
+    "accepted_country_names": [
+      "Paraguay"
+    ],
+    "capitals": [
+      "Asunción"
+    ],
+    "accepted_capitals": {
+      "Asunción": [
+        "Asunción",
+        "Asuncion"
+      ]
+    },
+    "coordinates": {
+      "Asunción": [-25.2637, -57.5759]
+    }
+  },
+  "275": {
+    "id": "275",
+    "name": "Palestine",
+    "accepted_country_names": [
+      "Palestine"
+    ],
+    "capitals": [
+      "Ramallah"
+    ],
+    "accepted_capitals": {
+      "Ramallah": [
+        "Ramallah"
+      ]
+    },
+    "coordinates": {
+      "Ramallah": [31.9038, 35.2034]
+    }
+  },
+  "634": {
+    "id": "634",
+    "name": "Qatar",
+    "accepted_country_names": [
+      "Qatar"
+    ],
+    "capitals": [
+      "Doha"
+    ],
+    "accepted_capitals": {
+      "Doha": [
+        "Doha"
+      ]
+    },
+    "coordinates": {
+      "Doha": [25.2854, 51.5310]
+    }
+  },
+  "642": {
+    "id": "642",
+    "name": "Romania",
+    "accepted_country_names": [
+      "Romania"
+    ],
+    "capitals": [
+      "Bucharest"
+    ],
+    "accepted_capitals": {
+      "Bucharest": [
+        "Bucharest"
+      ]
+    },
+    "coordinates": {
+      "Bucharest": [44.4268, 26.1025]
+    }
+  },
+  "643": {
+    "id": "643",
+    "name": "Russia",
+    "accepted_country_names": [
+      "Russia"
+    ],
+    "capitals": [
+      "Moscow"
+    ],
+    "accepted_capitals": {
+      "Moscow": [
+        "Moscow"
+      ]
+    },
+    "coordinates": {
+      "Moscow": [55.7558, 37.6173]
+    }
+  },
+  "646": {
+    "id": "646",
+    "name": "Rwanda",
+    "accepted_country_names": [
+      "Rwanda"
+    ],
+    "capitals": [
+      "Kigali"
+    ],
+    "accepted_capitals": {
+      "Kigali": [
+        "Kigali"
+      ]
+    },
+    "coordinates": {
+      "Kigali": [-1.9441, 30.0619]
+    }
+  },
+  "682": {
+    "id": "682",
+    "name": "Saudi Arabia",
+    "accepted_country_names": [
+      "Saudi Arabia"
+    ],
+    "capitals": [
+      "Riyadh"
+    ],
+    "accepted_capitals": {
+      "Riyadh": [
+        "Riyadh"
+      ]
+    },
+    "coordinates": {
+      "Riyadh": [24.7136, 46.6753]
+    }
+  },
+  "729": {
+    "id": "729",
+    "name": "Sudan",
+    "accepted_country_names": [
+      "Sudan"
+    ],
+    "capitals": [
+      "Khartoum"
+    ],
+    "accepted_capitals": {
+      "Khartoum": [
+        "Khartoum"
+      ]
+    },
+    "coordinates": {
+      "Khartoum": [15.5007, 32.5599]
+    }
+  },
+  "686": {
+    "id": "686",
+    "name": "Senegal",
+    "accepted_country_names": [
+      "Senegal"
+    ],
+    "capitals": [
+      "Dakar"
+    ],
+    "accepted_capitals": {
+      "Dakar": [
+        "Dakar"
+      ]
+    },
+    "coordinates": {
+      "Dakar": [14.7167, -17.4677]
+    }
+  },
+  "702": {
+    "id": "702",
+    "name": "Singapore",
+    "accepted_country_names": [
+      "Singapore"
+    ],
+    "capitals": [
+      "Singapore"
+    ],
+    "accepted_capitals": {
+      "Singapore": [
+        "Singapore"
+      ]
+    },
+    "coordinates": {
+      "Singapore": [1.3521, 103.8198]
+    }
+  },
+  "090": {
+    "id": "090",
+    "name": "Solomon Islands",
+    "accepted_country_names": [
+      "Solomon Islands",
+      "The Solomon Islands"
+    ],
+    "capitals": [
+      "Honiara"
+    ],
+    "accepted_capitals": {
+      "Honiara": [
+        "Honiara"
+      ]
+    },
+    "coordinates": {
+      "Honiara": [-9.4456, 159.9729]
+    }
+  },
+  "694": {
+    "id": "694",
+    "name": "Sierra Leone",
+    "accepted_country_names": [
+      "Sierra Leone"
+    ],
+    "capitals": [
+      "Freetown"
+    ],
+    "accepted_capitals": {
+      "Freetown": [
+        "Freetown"
+      ]
+    },
+    "coordinates": {
+      "Freetown": [8.4840, -13.2299]
+    }
+  },
+  "222": {
+    "id": "222",
+    "name": "El Salvador",
+    "accepted_country_names": [
+      "El Salvador"
+    ],
+    "capitals": [
+      "San Salvador"
+    ],
+    "accepted_capitals": {
+      "San Salvador": [
+        "San Salvador"
+      ]
+    },
+    "coordinates": {
+      "San Salvador": [13.6929, -89.2182]
+    }
+  },
+  "674": {
+    "id": "674",
+    "name": "San Marino",
+    "accepted_country_names": [
+      "San Marino"
+    ],
+    "capitals": [
+      "City of San Marino"
+    ],
+    "accepted_capitals": {
+      "City of San Marino": [
+        "City of San Marino",
+        "San Marino"
+      ]
+    },
+    "coordinates": {
+      "City of San Marino": [43.9336, 12.4500]
+    }
+  },
+  "706": {
+    "id": "706",
+    "name": "Somalia",
+    "accepted_country_names": [
+      "Somalia"
+    ],
+    "capitals": [
+      "Mogadishu"
+    ],
+    "accepted_capitals": {
+      "Mogadishu": [
+        "Mogadishu"
+      ]
+    },
+    "coordinates": {
+      "Mogadishu": [2.0469, 45.3182]
+    }
+  },
+  "688": {
+    "id": "688",
+    "name": "Serbia",
+    "accepted_country_names": [
+      "Serbia"
+    ],
+    "capitals": [
+      "Belgrade"
+    ],
+    "accepted_capitals": {
+      "Belgrade": [
+        "Belgrade"
+      ]
+    },
+    "coordinates": {
+      "Belgrade": [44.7866, 20.4489]
+    }
+  },
+  "728": {
+    "id": "728",
+    "name": "South Sudan",
+    "accepted_country_names": [
+      "South Sudan"
+    ],
+    "capitals": [
+      "Juba"
+    ],
+    "accepted_capitals": {
+      "Juba": [
+        "Juba"
+      ]
+    },
+    "coordinates": {
+      "Juba": [4.8594, 31.5713]
+    }
+  },
+  "678": {
+    "id": "678",
+    "name": "São Tomé and Príncipe",
+    "accepted_country_names": [
+      "São Tomé and Príncipe",
+      "Sao Tome and Principe"
+    ],
+    "capitals": [
+      "São Tomé"
+    ],
+    "accepted_capitals": {
+      "São Tomé": [
+        "São Tomé",
+        "Sao Tome"
+      ]
+    },
+    "coordinates": {
+      "São Tomé": [0.3302, 6.7333]
+    }
+  },
+  "740": {
+    "id": "740",
+    "name": "Suriname",
+    "accepted_country_names": [
+      "Suriname"
+    ],
+    "capitals": [
+      "Paramaribo"
+    ],
+    "accepted_capitals": {
+      "Paramaribo": [
+        "Paramaribo"
+      ]
+    },
+    "coordinates": {
+      "Paramaribo": [5.8520, -55.2038]
+    }
+  },
+  "703": {
+    "id": "703",
+    "name": "Slovakia",
+    "accepted_country_names": [
+      "Slovak Republic",
+      "Slovakia"
+    ],
+    "capitals": [
+      "Bratislava"
+    ],
+    "accepted_capitals": {
+      "Bratislava": [
+        "Bratislava"
+      ]
+    },
+    "coordinates": {
+      "Bratislava": [48.1486, 17.1077]
+    }
+  },
+  "705": {
+    "id": "705",
+    "name": "Slovenia",
+    "accepted_country_names": [
+      "Slovenia",
+      "Republic of Slovenia"
+    ],
+    "capitals": [
+      "Ljubljana"
+    ],
+    "accepted_capitals": {
+      "Ljubljana": [
+        "Ljubljana"
+      ]
+    },
+    "coordinates": {
+      "Ljubljana": [46.0569, 14.5058]
+    }
+  },
+  "752": {
+    "id": "752",
+    "name": "Sweden",
+    "accepted_country_names": [
+      "Sweden"
+    ],
+    "capitals": [
+      "Stockholm"
+    ],
+    "accepted_capitals": {
+      "Stockholm": [
+        "Stockholm"
+      ]
+    },
+    "coordinates": {
+      "Stockholm": [59.3293, 18.0686]
+    }
+  },
+  "748": {
+    "id": "748",
+    "name": "Eswatini",
+    "accepted_country_names": [
+      "Eswatini"
+    ],
+    "capitals": [
+      "Lobamba",
+      "Mbabane"
+    ],
+    "accepted_capitals": {
+      "Lobamba": [
+        "Lobamba"
+      ],
+      "Mbabane": [
+        "Mbabane"
+      ]
+    },
+    "coordinates": {
+      "Lobamba": [-26.4167, 31.1833],
+      "Mbabane": [-26.3055, 31.1367]
+    }
+  },
+  "690": {
+    "id": "690",
+    "name": "Seychelles",
+    "accepted_country_names": [
+      "Seychelles",
+      "The Seychelles"
+    ],
+    "capitals": [
+      "Victoria"
+    ],
+    "accepted_capitals": {
+      "Victoria": [
+        "Victoria"
+      ]
+    },
+    "coordinates": {
+      "Victoria": [-4.6191, 55.4513]
+    }
+  },
+  "760": {
+    "id": "760",
+    "name": "Syria",
+    "accepted_country_names": [
+      "Syria"
+    ],
+    "capitals": [
+      "Damascus"
+    ],
+    "accepted_capitals": {
+      "Damascus": [
+        "Damascus"
+      ]
+    },
+    "coordinates": {
+      "Damascus": [33.5138, 36.2765]
+    }
+  },
+  "148": {
+    "id": "148",
+    "name": "Chad",
+    "accepted_country_names": [
+      "Chad"
+    ],
+    "capitals": [
+      "N'Djamena"
+    ],
+    "accepted_capitals": {
+      "N'Djamena": [
+        "N'Djamena"
+      ]
+    },
+    "coordinates": {
+      "N'Djamena": [12.1348, 15.0557]
+    }
+  },
+  "768": {
+    "id": "768",
+    "name": "Togo",
+    "accepted_country_names": [
+      "Togo"
+    ],
+    "capitals": [
+      "Lomé"
+    ],
+    "accepted_capitals": {
+      "Lomé": [
+        "Lomé",
+        "Lome"
+      ]
+    },
+    "coordinates": {
+      "Lomé": [6.1375, 1.2125]
+    }
+  },
+  "764": {
+    "id": "764",
+    "name": "Thailand",
+    "accepted_country_names": [
+      "Thailand"
+    ],
+    "capitals": [
+      "Bangkok"
+    ],
+    "accepted_capitals": {
+      "Bangkok": [
+        "Bangkok"
+      ]
+    },
+    "coordinates": {
+      "Bangkok": [13.7563, 100.5018]
+    }
+  },
+  "762": {
+    "id": "762",
+    "name": "Tajikistan",
+    "accepted_country_names": [
+      "Tajikistan"
+    ],
+    "capitals": [
+      "Dushanbe"
+    ],
+    "accepted_capitals": {
+      "Dushanbe": [
+        "Dushanbe"
+      ]
+    },
+    "coordinates": {
+      "Dushanbe": [38.5598, 68.7870]
+    }
+  },
+  "795": {
+    "id": "795",
+    "name": "Turkmenistan",
+    "accepted_country_names": [
+      "Turkmenistan"
+    ],
+    "capitals": [
+      "Ashgabat"
+    ],
+    "accepted_capitals": {
+      "Ashgabat": [
+        "Ashgabat"
+      ]
+    },
+    "coordinates": {
+      "Ashgabat": [37.9601, 58.3261]
+    }
+  },
+  "626": {
+    "id": "626",
+    "name": "Timor-Leste",
+    "accepted_country_names": [
+      "Timor-Leste",
+      "East Timor"
+    ],
+    "capitals": [
+      "Dili"
+    ],
+    "accepted_capitals": {
+      "Dili": [
+        "Dili"
+      ]
+    },
+    "coordinates": {
+      "Dili": [-8.5569, 125.5603]
+    }
+  },
+  "776": {
+    "id": "776",
+    "name": "Tonga",
+    "accepted_country_names": [
+      "Tonga"
+    ],
+    "capitals": [
+      "Nuku'alofa"
+    ],
+    "accepted_capitals": {
+      "Nuku'alofa": [
+        "Nuku'alofa"
+      ]
+    },
+    "coordinates": {
+      "Nuku'alofa": [-21.1393, -175.2049]
+    }
+  },
+  "780": {
+    "id": "780",
+    "name": "Trinidad and Tobago",
+    "accepted_country_names": [
+      "Trinidad and Tobago",
+      "Trinidad & Tobago"
+    ],
+    "capitals": [
+      "Port of Spain"
+    ],
+    "accepted_capitals": {
+      "Port of Spain": [
+        "Port of Spain"
+      ]
+    },
+    "coordinates": {
+      "Port of Spain": [10.6549, -61.5019]
+    }
+  },
+  "788": {
+    "id": "788",
+    "name": "Tunisia",
+    "accepted_country_names": [
+      "Tunisia"
+    ],
+    "capitals": [
+      "Tunis"
+    ],
+    "accepted_capitals": {
+      "Tunis": [
+        "Tunis"
+      ]
+    },
+    "coordinates": {
+      "Tunis": [36.8065, 10.1815]
+    }
+  },
+  "792": {
+    "id": "792",
+    "name": "Türkiye",
+    "accepted_country_names": [
+      "Turkiye",
+      "Türkiye"
+    ],
+    "capitals": [
+      "Ankara"
+    ],
+    "accepted_capitals": {
+      "Ankara": [
+        "Ankara"
+      ]
+    },
+    "coordinates": {
+      "Ankara": [39.9334, 32.8597]
+    }
+  },
+  "798": {
+    "id": "798",
+    "name": "Tuvalu",
+    "accepted_country_names": [
+      "Tuvalu"
+    ],
+    "capitals": [
+      "Funafuti"
+    ],
+    "accepted_capitals": {
+      "Funafuti": [
+        "Funafuti"
+      ]
+    },
+    "coordinates": {
+      "Funafuti": [-8.5201, 179.1983]
+    }
+  },
+  "158": {
+    "id": "158",
+    "name": "Taiwan",
+    "accepted_country_names": [
+      "Taiwan"
+    ],
+    "capitals": [
+      "Taipei"
+    ],
+    "accepted_capitals": {
+      "Taipei": [
+        "Taipei"
+      ]
+    },
+    "coordinates": {
+      "Taipei": [25.0330, 121.5654]
+    }
+  },
+  "834": {
+    "id": "834",
+    "name": "Tanzania",
+    "accepted_country_names": [
+      "Tanzania"
+    ],
+    "capitals": [
+      "Dodoma"
+    ],
+    "accepted_capitals": {
+      "Dodoma": [
+        "Dodoma"
+      ]
+    },
+    "coordinates": {
+      "Dodoma": [-6.1630, 35.7516]
+    }
+  },
+  "800": {
+    "id": "800",
+    "name": "Uganda",
+    "accepted_country_names": [
+      "Uganda"
+    ],
+    "capitals": [
+      "Kampala"
+    ],
+    "accepted_capitals": {
+      "Kampala": [
+        "Kampala"
+      ]
+    },
+    "coordinates": {
+      "Kampala": [0.3476, 32.5825]
+    }
+  },
+  "804": {
+    "id": "804",
+    "name": "Ukraine",
+    "accepted_country_names": [
+      "Ukraine"
+    ],
+    "capitals": [
+      "Kyiv"
+    ],
+    "accepted_capitals": {
+      "Kyiv": [
+        "Kyiv"
+      ]
+    },
+    "coordinates": {
+      "Kyiv": [50.4501, 30.5234]
+    }
+  },
+  "858": {
+    "id": "858",
+    "name": "Uruguay",
+    "accepted_country_names": [
+      "Uruguay"
+    ],
+    "capitals": [
+      "Montevideo"
+    ],
+    "accepted_capitals": {
+      "Montevideo": [
+        "Montevideo"
+      ]
+    },
+    "coordinates": {
+      "Montevideo": [-34.9011, -56.1645]
+    }
+  },
+  "840": {
+    "id": "840",
+    "name": "United States of America",
+    "accepted_country_names": [
+      "USA",
+      "United States",
+      "US",
+      "United States of America"
+    ],
+    "capitals": [
+      "Washington, D.C."
+    ],
+    "accepted_capitals": {
+      "Washington, D.C.": [
+        "Washington, D.C.",
+        "Washington, DC",
+        "Washington D.C.",
+        "Washington DC",
+        "Washington",
+        "D.C.",
+        "DC"
+      ]
+    },
+    "coordinates": {
+      "Washington, D.C.": [38.9072, -77.0369]
+    }
+  },
+  "860": {
+    "id": "860",
+    "name": "Uzbekistan",
+    "accepted_country_names": [
+      "Uzbekistan"
+    ],
+    "capitals": [
+      "Tashkent"
+    ],
+    "accepted_capitals": {
+      "Tashkent": [
+        "Tashkent"
+      ]
+    },
+    "coordinates": {
+      "Tashkent": [41.2995, 69.2401]
+    }
+  },
+  "336": {
+    "id": "336",
+    "name": "Vatican City",
+    "accepted_country_names": [
+      "Vatican City",
+      "Vatican"
+    ],
+    "capitals": [
+      "Vatican City"
+    ],
+    "accepted_capitals": {
+      "Vatican City": [
+        "Vatican City",
+        "Vatican"
+      ]
+    },
+    "coordinates": {
+      "Vatican City": [41.9029, 12.4534]
+    }
+  },
+  "670": {
+    "id": "670",
+    "name": "Saint Vincent and the Grenadines",
+    "accepted_country_names": [
+      "Saint Vincent and the Grenadines",
+      "Saint Vincent & the Grenadines",
+      "St. Vincent and the Grenadines",
+      "St. Vincent & the Grenadines",
+      "St Vincent and the Grenadines",
+      "St Vincent & the Grenadines"
+    ],
+    "capitals": [
+      "Kingstown"
+    ],
+    "accepted_capitals": {
+      "Kingstown": [
+        "Kingstown"
+      ]
+    },
+    "coordinates": {
+      "Kingstown": [13.1600, -61.2248]
+    }
+  },
+  "862": {
+    "id": "862",
+    "name": "Venezuela",
+    "accepted_country_names": [
+      "Venezuela"
+    ],
+    "capitals": [
+      "Caracas"
+    ],
+    "accepted_capitals": {
+      "Caracas": [
+        "Caracas"
+      ]
+    },
+    "coordinates": {
+      "Caracas": [10.4806, -66.9036]
+    }
+  },
+  "704": {
+    "id": "704",
+    "name": "Vietnam",
+    "accepted_country_names": [
+      "Vietnam",
+      "Viet Nam"
+    ],
+    "capitals": [
+      "Hanoi"
+    ],
+    "accepted_capitals": {
+      "Hanoi": [
+        "Hanoi"
+      ]
+    },
+    "coordinates": {
+      "Hanoi": [21.0285, 105.8542]
+    }
+  },
+  "548": {
+    "id": "548",
+    "name": "Vanuatu",
+    "accepted_country_names": [
+      "Vanuatu"
+    ],
+    "capitals": [
+      "Port Vila"
+    ],
+    "accepted_capitals": {
+      "Port Vila": [
+        "Port Vila"
+      ]
+    },
+    "coordinates": {
+      "Port Vila": [-17.7333, 168.3270]
+    }
+  },
+  "882": {
+    "id": "882",
+    "name": "Samoa",
+    "accepted_country_names": [
+      "Samoa"
+    ],
+    "capitals": [
+      "Apia"
+    ],
+    "accepted_capitals": {
+      "Apia": [
+        "Apia"
+      ]
+    },
+    "coordinates": {
+      "Apia": [-13.8333, -171.7667]
+    }
+  },
+  "887": {
+    "id": "887",
+    "name": "Yemen",
+    "accepted_country_names": [
+      "Yemen"
+    ],
+    "capitals": [
+      "Sana'a"
+    ],
+    "accepted_capitals": {
+      "Sana'a": [
+        "Sana'a",
+        "Sanaa"
+      ]
+    },
+    "coordinates": {
+      "Sana'a": [15.3694, 44.1910]
+    }
+  },
+  "710": {
+    "id": "710",
+    "name": "South Africa",
+    "accepted_country_names": [
+      "South Africa"
+    ],
+    "capitals": [
+      "Bloemfontein",
+      "Cape Town",
+      "Pretoria"
+    ],
+    "accepted_capitals": {
+      "Bloemfontein": [
+        "Bloemfontein"
+      ],
+      "Cape Town": [
+        "Cape Town"
+      ],
+      "Pretoria": [
+        "Pretoria"
+      ]
+    },
+    "coordinates": {
+      "Bloemfontein": [-29.0852, 26.1596],
+      "Cape Town": [-33.9249, 18.4241],
+      "Pretoria": [-25.7479, 28.2293]
+    }
+  },
+  "894": {
+    "id": "894",
+    "name": "Zambia",
+    "accepted_country_names": [
+      "Zambia"
+    ],
+    "capitals": [
+      "Lusaka"
+    ],
+    "accepted_capitals": {
+      "Lusaka": [
+        "Lusaka"
+      ]
+    },
+    "coordinates": {
+      "Lusaka": [-15.3875, 28.3228]
+    }
+  },
+  "716": {
+    "id": "716",
+    "name": "Zimbabwe",
+    "accepted_country_names": [
+      "Zimbabwe"
+    ],
+    "capitals": [
+      "Harare"
+    ],
+    "accepted_capitals": {
+      "Harare": [
+        "Harare"
+      ]
+    },
+    "coordinates": {
+      "Harare": [-17.8252, 31.0335]
+    }
+  }
+}
