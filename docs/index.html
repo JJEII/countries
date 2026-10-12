@@ -130,6 +130,9 @@
   </div>
 
   <script>
+    // Configurable typo threshold using Levenshtein distance
+    const TYPO_THRESHOLD = 1;
+
     let state = {
       countriesData: {},
       geoFeatures: [],
@@ -170,6 +173,53 @@
       return arr;
     }
 
+    // Levenshtein distance calculator
+    function getLevenshteinDistance(a, b) {
+      const matrix = [];
+      for (let i = 0; i <= b.length; i++) {
+        matrix[i] = [i];
+      }
+      for (let j = 0; j <= a.length; j++) {
+        matrix[0][j] = j;
+      }
+      for (let i = 1; i <= b.length; i++) {
+        for (let j = 1; j <= a.length; j++) {
+          if (b.charAt(i - 1) === a.charAt(j - 1)) {
+            matrix[i][j] = matrix[i - 1][j - 1];
+          } else {
+            matrix[i][j] = Math.min(
+              matrix[i - 1][j - 1] + 1,
+              Math.min(
+                matrix[i][j - 1] + 1,
+                matrix[i - 1][j] + 1
+              )
+            );
+          }
+        }
+      }
+      return matrix[b.length][a.length];
+    }
+
+    function checkMatchWithDistance(input, acceptedList) {
+      if (!input || !input.trim() || !acceptedList) return { match: false, distance: 999 };
+      const clean = str => String(str).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+      const cleanInput = clean(input);
+
+      let minDistance = 999;
+      for (const accepted of acceptedList) {
+        const cleanAccepted = clean(accepted);
+        const dist = getLevenshteinDistance(cleanInput, cleanAccepted);
+        if (dist < minDistance) {
+          minDistance = dist;
+        }
+      }
+
+      return {
+        match: minDistance <= TYPO_THRESHOLD,
+        distance: minDistance
+      };
+    }
+
     async function initApp() {
       try {
         const [topoData, localCapitalsData] = await Promise.all([
@@ -183,16 +233,14 @@
 
         state.countriesData = localCapitalsData;
 
-        // Safely extract GeoJSON features from TopoJSON
         let features = processTopoJsonFeatures(topoData);
-
-        // Run geometric fixes (Crimea, Kosovo, Western Sahara, Somalia unification)
         features = fixAndMergeGeometries(features);
         state.geoFeatures = features;
 
         resetState();
 
-        document.getElementById("data-status").innerText = `Loaded ${Object.keys(state.countriesData).length} countries.`;
+        const validIdsCount = getValidActiveIds().length;
+        document.getElementById("data-status").innerText = `Loaded ${validIdsCount} active territories.`;
         document.getElementById("data-status").className = "text-xs text-emerald-400";
       } catch (err) {
         console.error("GeoQuiz Initialization Error:", err);
@@ -202,9 +250,20 @@
     }
 
     function processTopoJsonFeatures(topoData) {
-      // Dynamically target the main objects layer (e.g. 'countries' or 'units')
       const objectKey = topoData.objects.countries ? "countries" : Object.keys(topoData.objects)[0];
       return topojson.feature(topoData, topoData.objects[objectKey]).features;
+    }
+
+    // Deduplicated valid active IDs to prevent score inflation from multi-part features
+    function getValidActiveIds() {
+      const validIds = new Set();
+      state.geoFeatures.forEach(feature => {
+        const id = String(feature.id || feature.properties?.iso_n3 || '').padStart(3, '0');
+        if (state.countriesData[id]) {
+          validIds.add(id);
+        }
+      });
+      return Array.from(validIds);
     }
 
     function resetState() {
@@ -213,15 +272,7 @@
       state.categories = { unanswered: [], unsubmitted: [], correct: [], partial: [], incorrect: [] };
       state.categoryIndices = { unanswered: 0, unsubmitted: 0, correct: 0, partial: 0, incorrect: 0 };
 
-      const validIds = [];
-      state.geoFeatures.forEach(feature => {
-        const id = String(feature.id || feature.properties?.iso_n3).padStart(3, '0');
-        if (state.countriesData[id]) {
-          validIds.push(id);
-        }
-      });
-
-      state.categories.unanswered = shuffleArray(validIds);
+      state.categories.unanswered = shuffleArray(getValidActiveIds());
 
       document.getElementById("results-modal").classList.add("hidden");
       deselectCountry();
@@ -244,7 +295,7 @@
         return ids.includes(id) || names.some(n => name.includes(n.toLowerCase())) || ids.includes(code);
       };
 
-      // 1. Crimea (643 / RUS -> 804 / UKR)
+      // 1. Crimea (643 -> 804)
       const russia = features.find(f => isFeature(f, ["643", "RUS"], ["russia"]));
       const ukraine = features.find(f => isFeature(f, ["804", "UKR"], ["ukraine"]));
       if (russia && russia.geometry?.type === "MultiPolygon") {
@@ -296,55 +347,6 @@
             id: "383",
             properties: { name: "Kosovo", iso_n3: "383", iso_a3: "XKX" },
             geometry: { type: "Polygon", coordinates: [kosovoRings[0]] }
-          });
-        }
-      }
-
-      // 3. Merge Somalia (706) & Somaliland (705 / SML) into ONE clean feature
-      const somalia = features.find(f => isFeature(f, ["706", "SOM"], ["somalia"]));
-      const somalilandIdx = features.findIndex(f => isFeature(f, ["705", "SML", "SOL"], ["somaliland"]));
-
-      if (somalilandIdx !== -1 && somalia) {
-        const somaliland = features[somalilandIdx];
-        const getPolys = (feat) => feat.geometry.type === "Polygon" ? [feat.geometry.coordinates] : feat.geometry.coordinates;
-        
-        somalia.geometry = {
-          type: "MultiPolygon",
-          coordinates: [...getPolys(somalia), ...getPolys(somaliland)]
-        };
-        features.splice(somalilandIdx, 1);
-      }
-
-      // 4. Separate Western Sahara (732) from Morocco (504)
-      const morocco = features.find(f => isFeature(f, ["504", "MAR"], ["morocco"]));
-      const existingSahara = features.find(f => isFeature(f, ["732", "ESH", "SAH"], ["western sahara"]));
-
-      if (!existingSahara && morocco && morocco.geometry) {
-        const polys = morocco.geometry.type === "Polygon" ? [morocco.geometry.coordinates] : morocco.geometry.coordinates;
-        const saharaRings = [];
-        const northernRings = [];
-
-        polys.forEach(poly => {
-          const lats = poly[0].map(p => p[1]);
-          const maxLat = Math.max(...lats);
-          
-          if (maxLat <= 27.8) {
-            saharaRings.push(poly);
-          } else {
-            northernRings.push(poly);
-          }
-        });
-
-        if (saharaRings.length > 0) {
-          morocco.geometry = { type: "MultiPolygon", coordinates: northernRings };
-          features.push({
-            type: "Feature",
-            id: "732",
-            properties: { name: "Western Sahara", iso_n3: "732", iso_a3: "ESH" },
-            geometry: {
-              type: saharaRings.length === 1 ? "Polygon" : "MultiPolygon",
-              coordinates: saharaRings.length === 1 ? saharaRings[0] : saharaRings
-            }
           });
         }
       }
@@ -476,8 +478,8 @@
           if (!data || !ans || !ans.submitted) return "#f59e0b";
 
           const accepted = data.accepted_capitals?.[d.capitalName] || [d.capitalName];
-          const isThisCapCorrect = (ans.capitals || []).some(userVal => checkMatch(userVal, accepted));
-          return isThisCapCorrect ? "#22c55e" : "#ef4444";
+          const matchRes = (ans.capitals || []).some(userVal => checkMatchWithDistance(userVal, accepted).match);
+          return matchRes ? "#22c55e" : "#ef4444";
         })
         .attr("stroke", d => d.countryId === state.selectedId ? "#ffffff" : "#0f172a");
 
@@ -606,12 +608,12 @@
       let pointsEarned = 0;
       const totalPossible = 1 + data.capitals.length;
 
-      const isCountryCorrect = checkMatch(countryVal, data.accepted_country_names);
-      if (isCountryCorrect) pointsEarned += 1;
+      const countryRes = checkMatchWithDistance(countryVal, data.accepted_country_names);
+      if (countryRes.match) pointsEarned += 1;
 
       let availCaps = [...data.capitals];
       capInputs.forEach(val => {
-        const mIdx = availCaps.findIndex(cap => checkMatch(val, data.accepted_capitals?.[cap] || [cap]));
+        const mIdx = availCaps.findIndex(cap => checkMatchWithDistance(val, data.accepted_capitals?.[cap] || [cap]).match);
         if (mIdx !== -1) {
           pointsEarned += 1;
           availCaps.splice(mIdx, 1);
@@ -676,13 +678,6 @@
       }
     }
 
-    function checkMatch(input, acceptedList) {
-      if (!input || !input.trim() || !acceptedList) return false;
-      const clean = str => String(str).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
-      const cleanIn = clean(input);
-      return cleanIn.length > 0 && acceptedList.some(a => clean(a) === cleanIn);
-    }
-
     function renderFeedback(id) {
       const data = state.countriesData[id];
       const ans = state.userAnswers[id];
@@ -690,14 +685,31 @@
       // 1. Country Name Feedback
       const fbCountry = document.getElementById("feedback-country");
       fbCountry.classList.remove("hidden");
-      const isCountryCorrect = checkMatch(ans.country, data.accepted_country_names);
+      const countryRes = checkMatchWithDistance(ans.country, data.accepted_country_names);
       
       const preferredCountry = data.name || (data.accepted_country_names ? data.accepted_country_names[0] : 'N/A');
-      fbCountry.className = `p-2.5 rounded-lg border text-sm mt-2 ${isCountryCorrect ? 'bg-emerald-950/50 border-emerald-800 text-emerald-300' : 'bg-red-950/50 border-red-800 text-red-300'}`;
-      fbCountry.innerHTML = `
-        <div class="font-bold">${isCountryCorrect ? '✓ Correct Country' : '✗ Incorrect Country'}</div>
-        <div class="text-slate-300 mt-0.5">Preferred Answer: <span class="font-semibold text-white">${preferredCountry}</span></div>
-      `;
+      
+      if (countryRes.match) {
+        if (countryRes.distance > 0) {
+          fbCountry.className = "p-2.5 rounded-lg border text-sm mt-2 bg-amber-950/50 border-amber-800 text-amber-300";
+          fbCountry.innerHTML = `
+            <div class="font-bold">✓ Correct Country (Minor typo detected)</div>
+            <div class="text-slate-300 mt-0.5">Preferred Spelling: <span class="font-semibold text-white">${preferredCountry}</span></div>
+          `;
+        } else {
+          fbCountry.className = "p-2.5 rounded-lg border text-sm mt-2 bg-emerald-950/50 border-emerald-800 text-emerald-300";
+          fbCountry.innerHTML = `
+            <div class="font-bold">✓ Correct Country</div>
+            <div class="text-slate-300 mt-0.5">Preferred Answer: <span class="font-semibold text-white">${preferredCountry}</span></div>
+          `;
+        }
+      } else {
+        fbCountry.className = "p-2.5 rounded-lg border text-sm mt-2 bg-red-950/50 border-red-800 text-red-300";
+        fbCountry.innerHTML = `
+          <div class="font-bold">✗ Incorrect Country</div>
+          <div class="text-slate-300 mt-0.5">Preferred Answer: <span class="font-semibold text-white">${preferredCountry}</span></div>
+        `;
+      }
 
       // 2. Capital Feedback
       const capInputs = document.querySelectorAll(".input-capital");
@@ -709,20 +721,38 @@
         fbCap.classList.remove("hidden");
         const val = ans.capitals[idx] || '';
 
-        const matchedIdx = availCaps.findIndex(c => checkMatch(val, data.accepted_capitals?.[c] || [c]));
-        const isCapCorrect = matchedIdx !== -1;
-
-        if (isCapCorrect) {
+        const matchedIdx = availCaps.findIndex(c => checkMatchWithDistance(val, data.accepted_capitals?.[c] || [c]).match);
+        let capRes = { match: false, distance: 999 };
+        if (matchedIdx !== -1) {
+          capRes = checkMatchWithDistance(val, data.accepted_capitals?.[availCaps[matchedIdx]] || [availCaps[matchedIdx]]);
           availCaps.splice(matchedIdx, 1);
+        } else {
+          capRes = checkMatchWithDistance(val, data.accepted_capitals?.[data.capitals[idx]] || [data.capitals[idx]]);
         }
 
         const preferredDisplay = isMultiCapital ? data.capitals.join(", ") : (data.capitals[idx] || data.capitals[0] || 'N/A');
         
-        fbCap.className = `p-2.5 rounded-lg border text-sm mt-2 ${isCapCorrect ? 'bg-emerald-950/50 border-emerald-800 text-emerald-300' : 'bg-red-950/50 border-red-800 text-red-300'}`;
-        fbCap.innerHTML = `
-          <div class="font-bold">${isCapCorrect ? '✓ Correct Capital' : '✗ Incorrect Capital'}</div>
-          <div class="text-slate-300 mt-0.5">Preferred Answer${isMultiCapital ? 's' : ''}: <span class="font-semibold text-white">${preferredDisplay}</span></div>
-        `;
+        if (capRes.match) {
+          if (capRes.distance > 0) {
+            fbCap.className = "p-2.5 rounded-lg border text-sm mt-2 bg-amber-950/50 border-amber-800 text-amber-300";
+            fbCap.innerHTML = `
+              <div class="font-bold">✓ Correct Capital (Minor typo detected)</div>
+              <div class="text-slate-300 mt-0.5">Preferred Spelling${isMultiCapital ? 's' : ''}: <span class="font-semibold text-white">${preferredDisplay}</span></div>
+            `;
+          } else {
+            fbCap.className = "p-2.5 rounded-lg border text-sm mt-2 bg-emerald-950/50 border-emerald-800 text-emerald-300";
+            fbCap.innerHTML = `
+              <div class="font-bold">✓ Correct Capital</div>
+              <div class="text-slate-300 mt-0.5">Preferred Answer${isMultiCapital ? 's' : ''}: <span class="font-semibold text-white">${preferredDisplay}</span></div>
+            `;
+          }
+        } else {
+          fbCap.className = "p-2.5 rounded-lg border text-sm mt-2 bg-red-950/50 border-red-800 text-red-300";
+          fbCap.innerHTML = `
+            <div class="font-bold">✗ Incorrect Capital</div>
+            <div class="text-slate-300 mt-0.5">Preferred Answer${isMultiCapital ? 's' : ''}: <span class="font-semibold text-white">${preferredDisplay}</span></div>
+          `;
+        }
       });
 
       document.getElementById("btn-submit").classList.add("hidden");
@@ -765,10 +795,12 @@
 
     function updateScoreboard() {
       let earned = 0, total = 0, doneCount = 0;
-      const totalCount = Object.keys(state.countriesData).length;
+      const validIds = getValidActiveIds();
 
-      Object.entries(state.countriesData).forEach(([id, data]) => {
-        const poss = 1 + data.capitals.length;
+      validIds.forEach(id => {
+        const data = state.countriesData[id];
+        if (!data) return;
+        const poss = 1 + (data.capitals ? data.capitals.length : 0);
         total += poss;
         const ans = state.userAnswers[id];
         if (ans && ans.submitted) {
@@ -778,7 +810,7 @@
       });
 
       document.getElementById("score-display").innerText = `${earned} / ${total} pts`;
-      document.getElementById("country-progress").innerText = `${doneCount} / ${totalCount}`;
+      document.getElementById("country-progress").innerText = `${doneCount} / ${validIds.length}`;
 
       return { earned, total };
     }
@@ -794,13 +826,14 @@
       listContainer.innerHTML = '';
 
       const submittedEntries = Object.entries(state.userAnswers).filter(([_, ans]) => ans.submitted);
-      document.getElementById("modal-breakdown-count").innerText = `${submittedEntries.length} / ${Object.keys(state.countriesData).length} Attempted`;
+      const validIdsCount = getValidActiveIds().length;
+      document.getElementById("modal-breakdown-count").innerText = `${submittedEntries.length} / ${validIdsCount} Attempted`;
 
       submittedEntries.forEach(([id, ans]) => {
         const data = state.countriesData[id];
         if (!data) return;
 
-        const isCountryCorrect = checkMatch(ans.country, data.accepted_country_names);
+        const countryRes = checkMatchWithDistance(ans.country, data.accepted_country_names);
         const card = document.createElement("div");
         card.className = "bg-slate-900 border border-slate-800 rounded-lg p-3 space-y-2";
 
@@ -822,22 +855,29 @@
             </span>
           </div>
           <div class="text-xs text-slate-300 pl-2">
-            Country: ${isCountryCorrect ? '<span class="text-emerald-400 font-medium">✓ ' + (ans.country || data.name) + '</span>' : '<span class="text-red-400">✗ ' + (ans.country || 'Blank') + '</span> <span class="text-slate-500">(Expected: ' + data.name + ')</span>'}
+            Country: ${countryRes.match 
+              ? (countryRes.distance > 0 ? '<span class="text-amber-400 font-medium">✓ (Typo) ' + (ans.country || data.name) + '</span>' : '<span class="text-emerald-400 font-medium">✓ ' + (ans.country || data.name) + '</span>') 
+              : '<span class="text-red-400">✗ ' + (ans.country || 'Blank') + '</span> <span class="text-slate-500">(Expected: ' + data.name + ')</span>'}
           </div>
         `;
 
         let availCaps = [...data.capitals];
         data.capitals.forEach((cap, idx) => {
           const userCapVal = ans.capitals[idx] || '';
-          const matchedIdx = availCaps.findIndex(c => checkMatch(userCapVal, data.accepted_capitals?.[c] || [c]));
-          const isCapCorrect = matchedIdx !== -1;
-          if (isCapCorrect) availCaps.splice(matchedIdx, 1);
+          const matchedIdx = availCaps.findIndex(c => checkMatchWithDistance(userCapVal, data.accepted_capitals?.[c] || [c]).match);
+          let capRes = { match: false, distance: 999 };
+          if (matchedIdx !== -1) {
+            capRes = checkMatchWithDistance(userCapVal, data.accepted_capitals?.[availCaps[matchedIdx]] || [availCaps[matchedIdx]]);
+            availCaps.splice(matchedIdx, 1);
+          } else {
+            capRes = checkMatchWithDistance(userCapVal, data.accepted_capitals?.[data.capitals[idx]] || [data.capitals[idx]]);
+          }
 
           html += `
             <div class="text-xs text-slate-300 pl-5 border-l-2 border-slate-800 ml-2">
               Capital ${data.capitals.length > 1 ? '#' + (idx + 1) : ''}: 
-              ${isCapCorrect 
-                ? '<span class="text-emerald-400 font-medium">✓ ' + (userCapVal || cap) + '</span>' 
+              ${capRes.match 
+                ? (capRes.distance > 0 ? '<span class="text-amber-400 font-medium">✓ (Typo) ' + (userCapVal || cap) + '</span>' : '<span class="text-emerald-400 font-medium">✓ ' + (userCapVal || cap) + '</span>')
                 : '<span class="text-red-400">✗ ' + (userCapVal || 'Blank') + '</span> <span class="text-slate-500">(Expected: ' + cap + ')</span>'}
             </div>
           `;
