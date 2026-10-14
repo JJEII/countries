@@ -41,15 +41,37 @@
       100% { filter: drop-shadow(0 0 3px #f43f5e); }
     }
 
-    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
     .custom-scrollbar::-webkit-scrollbar-track { background: #0f172a; border-radius: 4px; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
     .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+    /* Mobile Responsive Layout & Touch Optimizations */
+    @media (max-width: 768px) {
+      body { overflow: auto; }
+      .flex-1.flex { flex-direction: column !important; }
+      #map-container { flex: 1; height: 50vh !important; min-height: 280px; touch-action: none; }
+      #side-panel {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        max-height: 45vh !important;
+        border-left: none !important;
+        border-top: 1px solid #334155 !important;
+        border-radius: 1rem 1rem 0 0 !important;
+        box-shadow: 0 -10px 25px -5px rgba(0, 0, 0, 0.5) !important;
+        overflow-y: auto !important;
+        z-index: 50 !important;
+      }
+      .quiz-input { font-size: 16px !important; } /* Prevents iOS auto-zoom on input focus */
+    }
   </style>
 </head>
 <body class="h-screen w-screen overflow-hidden flex flex-col">
 
-  <header class="bg-slate-900 border-b border-slate-800 p-3 flex justify-between items-center z-10">
+  <header class="bg-slate-900 border-b border-slate-800 p-3 flex justify-between items-center z-10 shrink-0">
     <div class="flex items-center space-x-3">
       <div class="p-2 bg-indigo-600 rounded-lg font-bold text-white text-base">🌐 GeoQuiz</div>
       <div>
@@ -57,15 +79,15 @@
         <p id="data-status" class="text-xs text-amber-400">Loading datasets...</p>
       </div>
     </div>
-    <div class="flex items-center space-x-6 text-sm">
+    <div class="flex items-center space-x-4 sm:space-x-6 text-xs sm:text-sm">
       <div>Score: <span id="score-display" class="font-bold text-emerald-400">0 / 0 pts</span></div>
       <div>Countries: <span id="country-progress" class="font-semibold text-slate-200">0 / 0</span></div>
       <button id="btn-global-reset" class="bg-slate-800 hover:bg-slate-700 text-xs px-2.5 py-1 rounded border border-slate-700 text-slate-300">Reset All</button>
     </div>
   </header>
 
-  <div id="category-bar" class="bg-slate-900/90 border-b border-slate-800 px-4 py-2 flex items-center space-x-2 overflow-x-auto min-h-[44px]">
-    <span class="text-xs text-slate-500 font-semibold uppercase mr-2">Categories:</span>
+  <div id="category-bar" class="bg-slate-900/90 border-b border-slate-800 px-4 py-2 flex items-center space-x-2 overflow-x-auto min-h-[44px] shrink-0 custom-scrollbar">
+    <span class="text-xs text-slate-500 font-semibold uppercase mr-2 whitespace-nowrap">Categories:</span>
     <div id="category-chips-container" class="flex items-center space-x-2"></div>
   </div>
 
@@ -76,7 +98,7 @@
       <div>
         <div class="flex justify-between items-center pb-3 border-b border-slate-800">
           <h2 id="panel-title" class="text-xl font-bold text-indigo-400">Select a Country</h2>
-          <button id="btn-close" class="text-slate-400 hover:text-white text-base">✕</button>
+          <button id="btn-close" class="text-slate-400 hover:text-white text-base p-1">✕</button>
         </div>
 
         <div id="panel-content" class="mt-4">
@@ -164,6 +186,13 @@
       });
     });
     svg.call(zoom);
+
+    window.addEventListener('resize', () => {
+      if (!container.node()) return;
+      width = container.node().clientWidth || 1000;
+      height = container.node().clientHeight || 700;
+      svg.attr("viewBox", `0 0 ${width} ${height}`);
+    });
 
     function shuffleArray(arr) {
       for (let i = arr.length - 1; i > 0; i--) {
@@ -254,7 +283,6 @@
       return topojson.feature(topoData, topoData.objects[objectKey]).features;
     }
 
-    // Deduplicated valid active IDs to prevent score inflation from multi-part features
     function getValidActiveIds() {
       const validIds = new Set();
       state.geoFeatures.forEach(feature => {
@@ -349,6 +377,30 @@
             geometry: { type: "Polygon", coordinates: [kosovoRings[0]] }
           });
         }
+      }
+
+      // 3. Inject Tuvalu (798) at Funafuti (-8.5201, 179.1983) as a small clickable polygon feature
+      const hasTuvalu = features.some(f => isFeature(f, ["798", "TUV"], ["tuvalu"]));
+      if (!hasTuvalu) {
+        const centerLng = 179.1983;
+        const centerLat = -8.5201;
+        const r = 0.5; // radius in degrees for clickability
+        const coords = [];
+        for (let i = 0; i <= 32; i++) {
+          const angle = (i / 32) * 2 * Math.PI;
+          // I manually added the negative signs in front of the angle parameter because the winding
+          // order for this polygon ended up being backward and needed to be reversed to work properly.
+          coords.push([centerLng + r * Math.cos(-angle), centerLat + r * Math.sin(-angle)]);
+        }
+        features.push({
+          type: "Feature",
+          id: "798",
+          properties: { name: "Tuvalu", iso_n3: "798", iso_a3: "TUV" },
+          geometry: {
+            type: "Polygon",
+            coordinates: [coords]
+          }
+        });
       }
 
       return mergeTerritories(features);
@@ -505,7 +557,7 @@
 
         if (isNaN(x) || isNaN(y) || dx === 0 || dy === 0) return;
 
-        const scale = Math.max(1, Math.min(8, 0.45 / Math.max(dx / width, dy / height)));
+        const scale = Math.max(1, Math.min(12, 0.45 / Math.max(dx / width, dy / height)));
         const translate = [width / 2 - scale * x, height / 2 - scale * y];
 
         svg.transition()
@@ -781,7 +833,7 @@
         if (!list.length) return;
         const btn = document.createElement("button");
         btn.setAttribute("data-category", cat);
-        btn.className = "px-3 py-1 rounded-full border text-xs font-medium bg-slate-800 border-slate-700 text-slate-200 hover:bg-slate-700 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition";
+        btn.className = "px-3 py-1 rounded-full border text-xs font-medium bg-slate-800 border-slate-700 text-slate-200 hover:bg-slate-700 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition whitespace-nowrap";
         btn.innerHTML = `${labels[cat]} (${list.length}) <span class="text-indigo-400 font-bold ml-1">Next →</span>`;
         btn.onclick = () => {
           const idx = state.categoryIndices[cat] % list.length;
