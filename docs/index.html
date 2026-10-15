@@ -745,21 +745,21 @@
         if (countryRes.distance > 0) {
           fbCountry.className = "p-2.5 rounded-lg border text-sm mt-2 bg-amber-950/50 border-amber-800 text-amber-300";
           fbCountry.innerHTML = `
-            <div class="font-bold">✓ Correct Country (Minor typo detected)</div>
-            <div class="text-slate-300 mt-0.5">Preferred Spelling: <span class="font-semibold text-white">${preferredCountry}</span></div>
+            <div class="font-bold">✓ Correct Country (typo detected)</div>
+            <div class="text-slate-300 mt-0.5">Accepted Spelling: <span class="font-semibold text-white">${preferredCountry}</span></div>
           `;
         } else {
           fbCountry.className = "p-2.5 rounded-lg border text-sm mt-2 bg-emerald-950/50 border-emerald-800 text-emerald-300";
           fbCountry.innerHTML = `
             <div class="font-bold">✓ Correct Country</div>
-            <div class="text-slate-300 mt-0.5">Preferred Answer: <span class="font-semibold text-white">${preferredCountry}</span></div>
+            <div class="text-slate-300 mt-0.5">Accepted Answer: <span class="font-semibold text-white">${preferredCountry}</span></div>
           `;
         }
       } else {
         fbCountry.className = "p-2.5 rounded-lg border text-sm mt-2 bg-red-950/50 border-red-800 text-red-300";
         fbCountry.innerHTML = `
           <div class="font-bold">✗ Incorrect Country</div>
-          <div class="text-slate-300 mt-0.5">Preferred Answer: <span class="font-semibold text-white">${preferredCountry}</span></div>
+          <div class="text-slate-300 mt-0.5">Accepted Answer: <span class="font-semibold text-white">${preferredCountry}</span></div>
         `;
       }
 
@@ -788,21 +788,21 @@
           if (capRes.distance > 0) {
             fbCap.className = "p-2.5 rounded-lg border text-sm mt-2 bg-amber-950/50 border-amber-800 text-amber-300";
             fbCap.innerHTML = `
-              <div class="font-bold">✓ Correct Capital (Minor typo detected)</div>
-              <div class="text-slate-300 mt-0.5">Preferred Spelling${isMultiCapital ? 's' : ''}: <span class="font-semibold text-white">${preferredDisplay}</span></div>
+              <div class="font-bold">✓ Correct Capital (typo detected)</div>
+              <div class="text-slate-300 mt-0.5">Accepted Spelling${isMultiCapital ? 's' : ''}: <span class="font-semibold text-white">${preferredDisplay}</span></div>
             `;
           } else {
             fbCap.className = "p-2.5 rounded-lg border text-sm mt-2 bg-emerald-950/50 border-emerald-800 text-emerald-300";
             fbCap.innerHTML = `
               <div class="font-bold">✓ Correct Capital</div>
-              <div class="text-slate-300 mt-0.5">Preferred Answer${isMultiCapital ? 's' : ''}: <span class="font-semibold text-white">${preferredDisplay}</span></div>
+              <div class="text-slate-300 mt-0.5">Accepted Answer${isMultiCapital ? 's' : ''}: <span class="font-semibold text-white">${preferredDisplay}</span></div>
             `;
           }
         } else {
           fbCap.className = "p-2.5 rounded-lg border text-sm mt-2 bg-red-950/50 border-red-800 text-red-300";
           fbCap.innerHTML = `
             <div class="font-bold">✗ Incorrect Capital</div>
-            <div class="text-slate-300 mt-0.5">Preferred Answer${isMultiCapital ? 's' : ''}: <span class="font-semibold text-white">${preferredDisplay}</span></div>
+            <div class="text-slate-300 mt-0.5">Accepted Answer${isMultiCapital ? 's' : ''}: <span class="font-semibold text-white">${preferredDisplay}</span></div>
           `;
         }
       });
